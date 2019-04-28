@@ -39,7 +39,7 @@
 
 <h4>
 <a id="Introduction-page" class="anchor" href="#Introduction-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction:</h4>
-
+<div style="text-align: justify; display: block; margin-right: auto;">
 <p>Rapid development of affordable and portable consumer depth cameras facilitates the use of depth information in many computer vision tasks such as intelligent vehicles and 3D reconstruction. However, depth map captured by low-cost depth sensors (e.g., Kinect) usually suffers from low spatial resolution, which limits its potential applications. In this paper, we propose a novel deep network for depth map super-resolution (SR), called DepthSR-Net. The proposed DepthSR-Net automatically infers a high resolution (HR) depth map from its low resolution (LR) version by hierarchical features driven residual learning. Specifically, DepthSR-Net is built on a residual U-Net deep network architecture. Given LR depth map, we first obtain the desired HR by bicubic interpolation upsampling, and then construct an input pyramid to achieve multiple level receptive fields. Next, we extract hierarchical features from the input pyramid, intensity image, and encoder-decoder structure of U-Net. Finally, we learn the residual between the interpolated depth map and the corresponding HR one using the rich hierarchical features. The final HR depth map is achieved by adding the learned residual to the interpolated depth map. We conduct an ablation study to demonstrate the effectiveness of each component in the proposed network. Extensive experiments demonstrate that the proposed method outperforms the state-of-the-art methods. Additionally, the potential usage of the proposed network in other low-level vision problems is discussed.
 </p>
 
