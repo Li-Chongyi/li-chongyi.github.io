@@ -1,0 +1,97 @@
+<!doctype html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Underwater Scene Prior Inspired Deep Underwater Image and Video Enhancement</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  </head>
+  <body>
+    <div class="wrapper">
+<header>
+<h7>Chongyi Li</h7><br><br>
+<div>
+<img src="sub_img/IMG_7689.jpg" border="0" width="80%"><br></div><br>
+
+  
+<p>
+<small>lichongyi25@gmail.com lichongyi@tju.edu.cn</small><br><br>
+<a href="https://github.com/Li-Chongyi" target="_blank">[GitHub]</a>   
+<a href="http://dblp.uni-trier.de/pers/hd/l/Li:Chongyi" target="_blank">[DBLP]</a>  <br>
+<a href="https://scholar.google.com/citations?user=1_I0P-AAAAAJ&hl=zh-CN" target="_blank">[Google Scholar]</a> <br>
+</p> <br>
+<p class="view"><a href="https://li-chongyi.github.io/">Homepage</a></p>
+<p class="view"><a href="sub_publication.html">Publications</a></p>
+<p class="view"><a href="sub_projects.html">Projects</a></p>
+</header>
+
+
+      <section>
+
+<h2>
+<a id="project_title" class="anchor" href="#project_title" aria-hidden="true"><span class="octicon octicon-link"></span></a>Underwater Scene Prior Inspired Deep Underwater Image and Video Enhancement</h2>
+
+
+
+
+<h4>
+<a id="Introduction-page" class="anchor" href="#Introduction-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract:</h4>
+<div style="text-align: justify; display: block; margin-right: auto;">
+<p>In underwater scenes, wavelength-dependent light absorption and scattering degrade the visibility of images and videos. The degraded underwater images and videos affect the accuracy of pattern recognition, visual understanding, and key feature extraction in underwater scenes. In this paper, we propose an underwater image enhancement convolutional neural network (CNN) model based on underwater scene prior, called UWCNN. Instead of estimating the parameters of underwater imaging model, the proposed UWCNN model directly reconstructs the clear latent underwater image, which benefits from the underwater scene prior which can be used to synthesize underwater image training data. Besides, based on the light-weight network structure and effective training data, our UWCNN model can be easily extended to underwater videos for frame-by-frame enhancement. Specifically, combining an underwater imaging physical model with optical properties of underwater scenes, we first synthesize underwater image degradation datasets which cover a diverse set of water types and degradation levels. Then, a light-weight CNN model is designed for enhancing each underwater scene type, which is trained by the corresponding training data. At last, this UWCNN model is directly extended to underwater video enhancement. Experiments on real-world and synthetic underwater images and videos demonstrate that our method generalizes well to different underwater scenes.
+
+</p>
+
+<div style="text-align: center; display: block; margin-right: auto;">
+<img src="sub_img/Benchmark_samples.png" border="0" ="300" width="700"><br></div><br>
+
+
+<hr />
+<h4>Paper:</h4>
+    
+<p>
+  Chongyi Li and Saeed Anwar
+  <br><strong>Underwater scene prior inspired deep underwater image and video enhancement</strong>. 
+  <a href="https://www.sciencedirect.com/science/article/pii/S0031320319303401"><font color="#ff0000"></font></a><br>
+</p>
+
+<hr />
+<h4>Results:</h4>
+    
+<p>
+<div style="text-align: center; display: block; margin-right: auto;">
+<img src="sub_img/samples.png" height="270" width="700"><br></div><br>
+</p>
+ 
+<hr />
+<h4>10 types of synthesized underwater image datasets: </h4>
+<p>
+To synthesize underwater image degradation datasets, we use the attenuation coefficients described in Table 1 for the different water types of oceanic and coastal classes (i.e., I, IA, IB, II, and III for open ocean waters, and 1, 3, 5, 7, and 9 for coastal waters). Type-I is the clearest and Type-III is the most turbid open ocean water. Similarly, for coastal waters, Type-1 is the clearest and Type-9 is the most turbid. We apply Eqs (1) and (2) (please check the paper) to build ten types of underwater image datasets using the RGB-D NYU-v2 indoor dataset which consists of 1449 images. To improve the quality of datasets, we crop the original size (480*640) of NYU-v2 to 460*620.   This dataset is for non-commercial use only. <ud2>Please enjoy the ten types of underwater image datasets (each dataset is about 1.2G).</ud2>
+
+<br><a <font color="#ff111">[Type-I]</font> href="https://pan.baidu.com/s/13k3qNGG93aFwdthjRtxi3Q" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-IA]</font> href="https://pan.baidu.com/s/13lRAbZYyYLyb-Z8qcpW-4Q" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-IB]</font> href="https://pan.baidu.com/s/12qXACo20C6ee9bViItZAFA" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-II]</font> href="https://pan.baidu.com/s/1iZM9md_mdeHXqw3XchvKHg" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-III]</font> href="https://pan.baidu.com/s/1fIKVcvU6jg5Mi0Sw-k8VmA" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-1]</font> href="https://pan.baidu.com/s/1V10iXd9QnFbevm17Ua0jwQ" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-3]</font> href="https://pan.baidu.com/s/1DEI4T700jmU-cUYgAxRQAw" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-5]</font> href="https://pan.baidu.com/s/1jlPodNRPqySGnFxr7-qRRg" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-7]</font> href="https://pan.baidu.com/s/12l0gCsPYOtEx7hCvp9C-fw" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br><a <font color="#ff111">[Type-9]</font> href="https://pan.baidu.com/s/1IPKimxXA1CsX3wjRE4VYNQ" target="_blank"><font color="#ff0000">[Baidu Cloud Link]</font></a><br>
+<br>If you use these datasets, please cite the related papers. Thanks.<br>
+<br>C. Li and S. Anwar, “Underwater scene prior inspired deep underwater image and video enhancement,” Pattern Recognition, vol. 98, no. 12, pp.1-11, 2019.</li><br>  
+<br>N. Silberman, D. Hoiem, and P. Fergus, “Indoor segmentation and support inference from rgbd images,” ECCV, pp.746-760, 2012.</li><br> 
+</p> 
+<hr />
+
+
+
+<div align="center"><a href="http://www.amazingcounters.com"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3230663&c=9692302" alt="AmazingCounters.com"></a></div>
+
+      </section>
+
+    </div>
+    <script src="../../javascripts/scale.fix.js"></script>
+  </body>
+</html>
