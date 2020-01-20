@@ -1,296 +1,284 @@
 
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <title>STFAN</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icon -->
+    <link href="/projects/stfan/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <!-- StyleSheets -->
+    <link rel="stylesheet" href="/projects/assets/css/google-fonts.min.css">
+    <link rel="stylesheet" href="/projects/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/projects/assets/css/style.css">
+    <style type="text/css">
+        div#gallery div.row {
+            opacity: 0.5;
+            position: relative;
+        }
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Zero-Reference Deep Curve Estimation for Low-Light Image Enhancement</title>
-  <!--=================Meta tags==========================-->
-  <meta name="robots" content="index,follow">
-  <meta name="description"
-    content="The paper presents a novel method, Zero-Reference Deep Curve Estimation (Zero-DCE), 
-             which formulates light enhancement as a task of image-specific curve estimation with a deep network.  
-             Our method trains a lightweight deep network, DCE-Net, to estimate pixel-wise and high-order curves for 
-             dynamic range adjustment of a given image.The curve estimation is specially designed, considering pixel 
-             value range, monotonicity, and differentiability. Zero-DCE is appealing in its relaxed assumption on 
-             reference images, i.e., it does not require any paired or unpaired data during training. This is achieved 
-             through a set of carefully formulated non-reference loss functions, which implicitly measure the enhancement 
-             quality and drive the learning of the network. Our method is efficient as image enhancement can be achieved 
-             by an intuitive and simple nonlinear curve mapping. Despite its simplicity, we show that it generalizes well 
-             to diverse lighting conditions. Extensive experiments on various benchmarks demonstrate the advantages of our 
-             method over state-of-the-art methods qualitatively and quantitatively. Furthermore, the potential benefits of 
-             our Zero-DCE to face detection in the dark are discussed. The code is available at https://github.com/xinntao/EDVR.">
-  <meta name="keywords"
-    content="low-light image, image enhancement, zero-reference learning, face detection">
-  <link rel="author" href="https://xinntao.github.io/projects/EDVR">
-  <!--=================js==========================-->
-  <link href="./css.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="./project.css" media="screen">
-  <script src="./effect.js "></script>
-  <!-- Latex -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-        TeX: { equationNumbers: { autoNumber: "AMS" } },
-      });
-      </script>
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+        div#gallery img.loading {
+            border: none;
+            max-height: 40px;
+            position: absolute;
+            left: 48%;
+            top: 48%;
+        }
+        
+        table {
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+            font-size: 13px;
+            margin: 0 auto;
+            width: 70%;
+        }
+        
+        table th, table td {
+            line-height: 180%;
+            text-align: center;
+        }
+        
+        table th:first-child, 
+        table td:first-child {
+            text-align: left;
+            padding: 0 10px;
+            width: 15%;
+        }
+        
+        table tr.btm-line th,
+        table tr.btm-line td {
+            border-bottom: 1px solid #000;
+        }
+        
+        /* All Mobile Sizes (devices and browser) */
+        @media only screen and (max-width: 767px) {
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/projects/assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
-  <!--=================Google Analytics==========================-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-129775907-1');
-  </script>
+    <script type="text/javascript" async
+      src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
 </head>
-
 <body>
-  <div id="content">
-    <div id="content-inner">
-      <div class="section head">
-        <h1>
-         Zero-Reference Deep Curve Estimation for Low-Light Image Enhancement
-        </h1>
-        <!--=================Authors==========================-->
-        <div class="authors">
-          Chunle Guo<sup>1</sup> &nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="https://li-chongyi.github.io/" target="_blank>"Chongyi Li</a> <sup>2</sup> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Jichang Guo<sup>1</sup> &nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="http://personal.ie.cuhk.edu.hk/~ccloy/" target="_blank">Chen Change Loy</a> <sup>3</sup>
-          <a href="https://sites.google.com/site/junhuihoushomepage/" target="_blank">Junhui Hou</a> <sup>2</sup>
-          <a href="http://www.cs.cityu.edu.hk/~cssamk/research_group/index.html/" target="_blank">Sam Kwong</a> <sup>2</sup>
-          <a href="https://rmcong.github.io//" target="_blank">Runmin Cong</a> <sup>4</sup>
-        </div>
-
-        <div class="affiliations ">
-          <sup>1</sup> Tianjin University, Tianjin, China
-          <sup>2</sup> City University of Hong Kong, Hong Kong SAR, China
-          <sup>3</sup> Nanyang Technological University, Singapore
-          <sup>4</sup> Beijing Jiaotong University, Beijing, China<br>
-        </div>
-        <!--=================Tabs==========================-->
-        <ul id="tabs">
-          <li><a href="#materials" name="#tab1">Materials</a></li>
-          <li><a href="#pcd_tsa" name="#tab2">PCD & TSA</a></li>
-          <li><a href="#ablations" name="#tab3">Ablations</a></li>
-          <li><a href="#results" name="#tab4">Results</a></li>
-          <li><a href="#citation" name="#tab5">Citation</a></li>
-      </div>
-      <br>
-      <!--=================Teasers==========================-->
-      <div id="img_intro_examples" class="img_container">
-        <center>
-          <div class="leftView">
-            <div class="mask" style="width:80px;height:80px"></div>
-            <img class='small' src="./EDVR_src/arch.png">
-          </div>
-        </center>
-      </div>
-      <div class="section">
-        <p><b>The EDVR framework</b>. It is a unified framework suitable for various video restoration tasks,
-          <i>e.g.</i>, super-resolution and
-          deblurring. Inputs with high spatial resolution are first down-sampled to reduce computational cost. Given
-          blurry inputs, a PreDeblur
-          Module is inserted before the PCD Align Module to improve alignment accuracy. We use three input frames as an
-          illustrative example.</p>
-      </div>
-      <!--=================Highlights==========================-->
-      <div class="section abstract">
-        <h2>Highlights</h2>
-        <ol>
-          <li>EDVR wins all <b>four</b> tracks in the <a href="http://www.vision.ee.ethz.ch/ntire19/"
-              target="_blank">NTIRE19 video restoration and enhancement challenges</a>.</li>
-          <li>We propose the PCD alignment module and TSA fusion module for effective alignment and fusion, respectively.
-          </li>
-          <li>We are constructing the <a href="https://xinntao.github.io/open-videorestoration/" target="_blank"><b>Open Video Restoration</b></a> project.
-          </li>
-        </ol>
-      </div>
-      <!--=================Materials==========================-->
-      <div class="section materials" , id="materials">
-        <h2>Materials</h2>
-        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
-          <tr>
-            <td width="40%">
-              <center>
-                <a href="https://arxiv.org/abs/1905.02716" target="_blank" class="imageLink"><img src="./EDVR_src/paper_thumbnail.jpg" ,
-                    width="80%"></a><br><br>
-                <a href="https://arxiv.org/abs/1905.02716" target="_blank">Paper</a>
-              </center>
-            </td>
-            <td width="20%" valign="middle">
-              <center>
-                <a href="https://github.com/xinntao/EDVR" target="_blank" class="imageLink"><img src="./icon_github.png"
-                    , width="50%"></a><br><br>
-                <a href="https://github.com/xinntao/EDVR" target="_blank">Codes</a>
-              </center>
-            </td>
-            <td width="40%" valign="middle">
-              <center>
-                <a href="https://xinntao.github.io/open-videorestoration/" target="_blank" class="imageLink"><img
-                    src="./EDVR_src/open_video.png" , width="50%"></a><br><br>
-                <a href="https://xinntao.github.io/open-videorestoration/" target="_blank">Open Video Restoration</a>
-              </center>
-            </td>
-          </tr>
+    <div class="container">
+        <h2>Spatio-Temporal Filter Adaptive Network for Video Deblurring</h2>
+        <p class="center">
+            <a href="https://shangchenzhou.com" target="_blank">Shangchen Zhou</a><sup>*</sup>, 
+            <a href="https://sites.google.com/site/zhjw1988" target="_blank">Jiawei Zhang</a><sup>*</sup>, 
+            <a href="https://sites.google.com/site/jspanhomepage/" target="_blank">Jinshan Pan</a>, 
+            <a href="https://haozhexie.com/about" target="_blank">Haozhe Xie</a>, 
+            <a href="http://scholar.google.com/citations?user=rUOpCEYAAAAJ" target="_blank">Wangmeng Zuo</a>, 
+            <a href="http://jimmyren.com" target="_blank">Jimmy Ren</a>
+        </p>
+        <p class="center">
+            <img src="/projects/assets/img/stfan/stfan.jpg" alt="STFAN" class="overview">
+        </p>
+        <h4>Abstract</h4>
+        <hr>
+        <p>Video deblurring is a challenging task due to the spatially variant blur caused by camera shake, object motions, and depth variations, etc. Existing methods usually estimate optical flow in the blurry video to align consecutive frames or approximate blur kernels. However, they tend to generate artifacts or cannot effectively remove blur when the estimated optical flow is not accurate. To overcome the limitation of separate optical flow estimation, we propose a Spatio-Temporal Filter Adaptive Network (STFAN) for the alignment and deblurring in a unified framework. The proposed STFAN takes both blurry and restored images of the previous frame as well as blurry image of the current frame as input, and dynamically generates the spatially adaptive filters for the alignment and deblurring. We then propose a new Filter Adaptive Convolutional (FAC) layers to align the deblurred features of the previous frame with the current frame and remove the spatially variant blur from the features of the current frame. Finally, we develop a reconstruction network which takes the fusion of two transformed features to restore the clear frames. Both quantitative and qualitative evaluation results on the benchmark datasets and real-world videos demonstrate that the proposed algorithm performs favorably against state-of-the-art methods in terms of accuracy, speed and model size.</p>
+        <hr>
+        <div id="paper-overview">
+            <div class="row">
+                <div class="col-3">
+                    <img src="/projects/assets/img/stfan/stfan-paper.jpg" alt="Paper">
+                </div> <!-- .col-3 -->
+                <div class="col-9">
+                    <ul>
+                        <li><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Zhou_Spatio-Temporal_Filter_Adaptive_Network_for_Video_Deblurring_ICCV_2019_paper.pdf" target="_blank">Paper</a></li>
+                        <li><a href="http://openaccess.thecvf.com/content_ICCV_2019/supplemental/Zhou_Spatio-Temporal_Filter_Adaptive_ICCV_2019_supplemental.pdf" target="_blank">Supplementary</a></li>
+                        <li><a href="/assets/paper/STFAN-poster.pdf" target="_blank">Poster</a></li>
+                        <li><a href="https://github.com/sczhou/STFAN" target="_blank">Code [GitHub]</a></li>
+                    </ul>
+                    <div class="citation-xl">
+                        <p>Citation</p>
+<pre>@inproceedings{zhou2019stfan,
+  title={Spatio-Temporal Filter Adaptive Network for Video Deblurring},
+  author={Zhou, Shangchen and Zhang, Jiawei and Pan, Jinshan and Xie, Haozhe and  Zuo, Wangmeng and Ren, Jimmy},
+  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+  year={2019}
+}</pre>
+                    </div> <!-- .citation-xl -->
+                </div> <!-- .col-9 -->
+                <div class="citation-lg">
+                    <p>Citation</p>
+<pre>@inproceedings{zhou2019stfan,
+  title={Spatio-Temporal Filter Adaptive Network for Video Deblurring},
+  author={Zhou, Shangchen and Zhang, Jiawei and Pan, Jinshan and Xie, Haozhe and  Zuo, Wangmeng and Ren, Jimmy},
+  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+  year={2019}
+}</pre>
+                </div> <!-- .citation-lg -->
+            </div> <!-- .row -->
+        </div> <!-- #paper-overview -->
+        <h4>Filter Adaptive Convolutional Layer</h4>
+        <hr>
+        <p>The proposed filter adaptive convolutional (FAC) layer applies generated pixel variant filters to the features, In theory, the element-wise adaptive filters is five-dimensional ($h \times w \times c \times k \times k$). In practice, the dimension of the generated filter $\mathcal{F}$ is $h\times w\times ck^2$ and we reshape it into the five-dimensional filter. For each position $(x, y, c_i)$ of input feature $Q\in \mathcal{R}^{h\times w\times c}$, a specific local filter $\mathcal{F}_{x, y, c_i}\in \mathcal{R}^{k\times k}$ (reshape from $1\times 1\times k^2$) is applied to the region centered around $Q_{x, y, c_i}$.</p>
+        <p class="center">
+            <img src="/projects/assets/img/stfan/fac.jpg" alt="FAClayer" class="img-40">
+        </p>
+        <p>&#10148; The <strong>forward pass</strong> of the proposed Filter Adaptive Convolutional (FAC) Layer is as follows:</p>
+        <p>$$\hat{Q}(x, y, c_i) = \mathcal{F}_{x, y, c_i} \ast Q_{x, y, c_i}  \nonumber = \sum_{n=-r}^{r} \sum_{m=-r}^{r} \mathcal{F}(x, y, k^2c_i+kn+m) \times Q(x-n, y-m, c_i)$$</p>
+        <p>&#10148; The <strong>backward pass</strong> can be presented as:</p>
+        <p>$$\Delta{Q}(x, y, c_i) = \sum_{n=-r}^{r} \sum_{m=-r}^{r} \mathcal{F}(x+n, y+m, k^2c_i+kn+m) \times \Delta{\hat{Q}}(x+n, y+m, c_i)$$</p>
+        <p>$$\Delta{\mathcal{F}}(x, y, k^2c_i+kn+m) =  Q(x-n, y-m, c_i) \times \Delta{\hat{Q}}(x, y, c_i)$$</p>
+        <p>in which $r=\frac{k-1}{2}$, $\mathcal{F}$ is the generated filter, $Q$ and $\hat{Q}$ denote the input features and transformed features, respectively.</p>
+        <h4>Illustration of Alignment and Deblurring Processes by FAC layer</h4>
+        <hr>
+        <p>The frame alignment and deblurring are both spatially variant tasks. Using the proposed FAC layer, we consider these two processes as two filter adaptive convolution in feature domain. The convolution operation can transform the pixels of features, which can be used for frames alignment (a) and deblurring (b) using estimated corresponding filters.</p>
+        <p class="center">
+            <img src="/projects/assets/img/stfan/align-deblur.jpg" alt="Align-Deblur" class="img-70">
+        </p>
+        
+        <h4>Experimental Results</h4>
+        <hr>
+        <h5>Quantitative evaluation</h5>
+        <p>Quantitative evaluation on the video deblurring dataset [4], in terms of PSNR, SSIM, running time (sec) and parameter numbers.</p>
+        <br>
+        <table>
+            <thead>
+                <tr class="btm-line">
+                    <th>Method</th>
+                    <th>Tao et al. [1]</th>
+                    <th>Kim and Lee [2]</th>
+                    <th>Kim et al. [3]</th>
+                    <th>Su et al. [4]</th>
+                    <th>Ours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#Frames</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>PSNR</td>
+                    <td>29.97</td>
+                    <td>27.01</td>
+                    <td>29.95</td>
+                    <td>30.05</td>
+                    <td><strong>31.24</strong></td>
+                </tr>
+                <tr class="btm-line">
+                    <td>SSIM</td>
+                    <td>0.919</td>
+                    <td>0.861</td>
+                    <td>0.911</td>
+                    <td>0.920</td>
+                    <td><strong>0.934</strong></td>
+                </tr>
+                <tr>
+                    <td>Time (sec)</td>
+                    <td>2.52</td>
+                    <td>880</td>
+                    <td>0.13</td>
+                    <td>6.88</td>
+                    <td>0.15</td>
+                </tr>
+                <tr>
+                    <td>#Params (M)</td>
+                    <td>8.06</td>
+                    <td>-</td>
+                    <td>0.92</td>
+                    <td>16.67</td>
+                    <td>5.37</td>
+                </tr>
+            </tbody>
         </table>
-      </div>
-
-      <!--=================Abstract==========================-->
-      <div class="section abstract">
-        <h2>Abstract</h2>
-        <br>
-        <p>
-          Video restoration tasks, including super-resolution, deblurring, <i>etc</i>, are drawing increasing attention
-          in the computer
-          vision community. A challenging benchmark named REDS is released in the NTIRE19 Challenge. This new benchmark
-          challenges
-          existing methods from two aspects: (1) how to <b>align</b> multiple frames given large motions, and (2) how to
-          effectively <b>fuse</b>
-          different frames with diverse motion and blur. In this work, we propose a novel Video Restoration framework
-          with
-          Enhanced Deformable networks, termed EDVR, to address these challenges. First, to handle large motions, we
-          devise a
-          <b>Pyramid, Cascading and Deformable (PCD) alignment module</b>, in which frame alignment is done at the
-          feature level using
-          deformable convolutions in a coarse-to-fine manner. Second, we propose a <b>Temporal and Spatial Attention
-            (TSA) fusion
-            module</b>, in which attention is applied both temporally and spatially, so as to emphasize important
-          features for
-          subsequent restoration. Thanks to these modules, our EDVR <b><i>wins the champions</i></b> and outperforms the
-          second place by <b><i>a large
-              margin</i></b> in all four tracks in the NTIRE19 video restoration and enhancement challenges. EDVR also
-          demonstrates superior
-          performance to state-of-the-art published methods on video super-resolution and deblurring.
-        </p>
-      </div>
-      <!--=================PCD and TSA Modules==========================-->
-      <div class="section" , id="pcd_tsa">
-        <h2> PCD and TSA Modules</h2>
-        <p>
-          <b>Left:</b> PCD alignment module with Pyramid, Cascading and Deformable convolution; <b>Right:</b> TSA
-          fusion module with Temporal and Spatial Attention. See <a href="#">our paper</a> for more details.
-        </p>
-        <div id="sr" class="img_container">
-          <center>
-            <img style="width:80%" src="./EDVR_src/pcd_tsa.jpg">
-          </center>
-        </div>
-      </div>
-      <br>
-
-      <!--=================Ablation studies==========================-->
-      <div class="section" , id="ablations">
-        <h2>Ablation Studies on PCD and TSA Modules</h2>
-        <p>
-          We show representative features before and after different alignment modules, and depict the flow (derived by
-          PWCNet)
-          between reference and neighboring features. Compared with the flow without PCD alignment, the flow of the PCD
-          outputs
-          is much smaller and cleaner, indicating that the PCD module can successfully handle large and complex motions.
-        </p>
-        <div id="sr" class="img_container">
-          <center>
-            <img style="width:90%" src="./EDVR_src/pcd_flow.jpg">
-          </center>
-        </div>
-        <p>
-          We present the flow between the reference and neighboring frames, together with the temporal attention of each
-          frame.
-          It is observed that the frames and regions with lower flow magnitude tend to have higher attention, indicating
-          that
-          the smaller the motion is, the more informative
-          the corresponding frames and regions are.
-        </p>
-        <div id="sr" class="img_container">
-          <center>
-            <img style="width:90%" src="./EDVR_src/tsa_flow.jpg">
-          </center>
-        </div>
-      </div>
-      <br>
-      <!--=================Applications==========================-->
-      <div class="section" , id="results">
-        <h2>Results</h2>
-        <!--=================*******==========================-->
-        <h3>1. Video Super-Resolution on Vid4 Dataset</h3>
-        <div id="vid4" class="img_container">
-          <center>
-            <div class="leftView">
-              <div class="mask" style="width:70px;height:70px"></div>
-              <img class='small' src="./EDVR_src/vid4.jpg">
-            </div>
-          </center>
-        </div>
-        <br>
-        <!--=================*******==========================-->
-        <h3>2. Video Super-Resolution on Vimeo90K Dataset</h3>
-        <div id="vimeo90k" class="img_container">
-          <center>
-            <div class="leftView">
-              <div class="mask" style="width:70px;height:70px"></div>
-              <img class='small' src="./EDVR_src/vimeo90k.jpg">
-            </div>
-          </center>
-        </div>
-        <br>
-        <!--=================*******==========================-->
-        <h3>3. Video Deblurring on REDS4 Dataset</h3>
-        <div id="reds4" class="img_container">
-          <center>
-            <div class="leftView">
-              <div class="mask" style="width:70px;height:70px"></div>
-              <img class='small' src="./EDVR_src/reds_deblur.jpg">
-            </div>
-          </center>
-        </div>
-        <br>
-        <!--=================*******==========================-->
-        <h3>4. Competition Results on REDS4 Dataset</h3>
-        <div id="reds4" class="img_container">
-          <center>
-            <div class="leftView">
-              <div class="mask" style="width:70px;height:70px"></div>
-              <img class='small' src="./EDVR_src/reds.jpg">
-            </div>
-          </center>
-        </div>
-        <br>
-      </div>
-      <!--=================Citation==========================-->
-      <div class="section citation" , id="citation">
-        <h2>Citation</h2>
-        <div class="section bibtex">
-          <pre>@InProceedings{wang2019edvr,
-          author = {Wang, Xintao and Chan, Kelvin C.K. and Yu, Ke and Dong, Chao and Loy, Chen Change},
-          title = {EDVR: Video Restoration with Enhanced Deformable Convolutional Networks},
-          booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-          month = {June},
-          year = {2019}
-          }
-          </pre>
-          <pre>@Article{tian2018tdan,
-          author = {Tian, Yapeng and Zhang, Yulun and Fu, Yun and Xu, Chenliang},
-          title = {TDAN: Temporally deformable alignment network for video super-resolution},
-          journal = {arXiv preprint arXiv:1812.02898},
-          year = {2018}
-          }
-          </pre>
-        </div>
-      </div>
-      <!--=================Contact==========================-->
-      <div class="section contact">
-        <h2 id="contact">Contact</h2>
-        <p>If you have any question, please contact Xintao Wang at <strong>wx016@ie.cuhk.edu.hk</strong>.</p>
-      </div>
+        <hr>
+        <div id="gallery">
+            <h5>Results on testing dataset</h5>
+            <div class="row">
+                <div class="col-12">
+                    <img src="/projects/assets/img/loading.gif" alt="Loading" class="loading">
+                    <img id="syn-frame" src="/projects/assets/img/stfan/results-synthetic/1.jpg" alt="Results-Frame">
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+            <hr>
+            <h5>Results on real blurry video</h5>
+            <div class="row">
+                <div class="col-12">
+                    <img src="/projects/assets/img/loading.gif" alt="Loading" class="loading">
+                    <img id="real-frame" src="/projects/assets/img/stfan/results-real/1.jpg" alt="Results-Frame">
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+        </div> <!-- #gallery -->
+        <h4>Contact</h4>
+        <hr>
+        <p>If you have any question, please contact Shangchen Zhou at <a href="mailto:shangchenzhou@gmail.com">shangchenzhou@gmail.com</a>.</p>
+        <h4>References</h4>
+        <hr>
+        <p>[1] X. Tao, H. Gao, X. Shen, J. Wang, and J. Jia. Scale-recurrent
+            network for deep image deblurring. In CVPR, 2018.</p>
+        <p>[2] T. Hyun Kim and K. Mu Lee. Generalized video deblurring for dynamic scenes. In CVPR, 2015.</p>
+        <p>[3] T. Hyun Kim, K. Mu Lee, B. Scholkopf, and M. Hirsch. Online video deblurring via dynamic temporal blending network. In CVPR, 2017.</p>
+        <p>[4] S. Su, M. Delbracio, J. Wang, G. Sapiro, W. Heidrich, and O. Wang. Deep video deblurring for hand-held cameras. In CVPR, 2017.</p>
+    </div> <!-- .container -->
+    <script type="text/javascript" src="/projects/assets/js/canvas-nest-1.0.1.min.js"></script>
+    <script type="text/javascript" src="/projects/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        String.prototype.format = function() {
+            var newStr = this, i = 0;
+            while (/%s/.test(newStr)) {
+                newStr = newStr.replace("%s", arguments[i++])
+            }
+            return newStr;
+        }
+    </script>
+    <script type="text/javascript">
+        $.when(
+            $.getJSON('/projects/assets/img/stfan/results-synthetic.json', function(base64Images) { 
+                synImagesSets = base64Images
+            }),
+            $.Deferred(function(deferred) {
+                $(deferred.resolve)
+            })
+        ).done(function() {
+            $('div#gallery div.row:nth-child(2) img.loading').addClass('hide')
+            $('div#gallery div.row:nth-child(2)').css('opacity', 1)
+            
+            var synIndex = 1
+            setInterval(function() {
+                if ( synIndex >= 32 ) {
+                    synIndex = 0
+                }
+                image = synImagesSets['img_%s'.format(++ synIndex)]
+                $('#syn-frame').attr('src', 'data:image/jpeg;base64,%s'.format(image))
+            }, 400)
+        })
+    </script>
+    <script type="text/javascript">
+        $.when(
+            $.getJSON('/projects/assets/img/stfan/results-real.json', function(base64Images) { 
+                realImagesSets = base64Images
+            }),
+            $.Deferred(function(deferred) {
+                $(deferred.resolve)
+            })
+        ).done(function() {
+            $('div#gallery div.row:nth-child(5) img.loading').addClass('hide')
+            $('div#gallery div.row:nth-child(5)').css('opacity', 1)
+            
+            var realIndex = 1
+            setInterval(function() {
+                if ( realIndex >= 32 ) {
+                    realIndex = 0
+                }
+                image = realImagesSets['img_%s'.format(++ realIndex)]
+                $('#real-frame').attr('src', 'data:image/jpeg;base64,%s'.format(image))
+            }, 400)
+        })
+    </script>
 </body>
-
 </html>
