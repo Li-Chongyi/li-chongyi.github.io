@@ -1,158 +1,119 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0044)https://nbei.github.io/video-inpainting.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Zero-Reference Deep Curve Estimation for Low-Light Image Enhancement</title>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Glaucoma Screening in Fundus Image</title>
 
-<!-- Meta tags for search engines to crawl -->
-<meta name="robots" content="index,follow">
-<meta name="description" content="Video-Inpainting.&gt;
-&lt;meta name=" keywords"="">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <div class="wrapper">
 
-<!-- Fonts and stuff -->
-<link href="./dct_iccv2019/css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="./dct_iccv2019/project.css" media="screen">
-<link rel="stylesheet" type="text/css" media="screen" href="./dct_iccv2019/iconize.css">
-<script type="text/javascript" async="" src="./dct_iccv2019/ga.js"></script><script type="text/javascript" async="" src="./dct_iccv2019/ga.js.download"></script><script async="" src="./dct_iccv2019/prettify.js.download"></script>
+<section>
 
-<script type="text/javascript">
-            
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-22940424-1']);
-            _gaq.push(['_trackPageview']);
-            
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-            
-</script>
+<h3>
+<a id="Back-pages" class="anchor" href="#Back-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="index.html#Project-page"><ud>Back to Homepage</ud></a> </h3>
 
-</head>
+<h2>
+<a id="project_title" class="anchor" href="#project_title" aria-hidden="true"><span class="octicon octicon-link"></span></a>Glaucoma Screening in Fundus Image
+</h2>
 
-<body>
-  <div id="content">
-    <div id="content-inner">
-      
-      <div class="section head">
-	<h2>Zero-Reference Deep Curve Estimation for Low-Light Image Enhancement</h2>
 
-	<div class="authors">
-	  <a href="https://penincillin.github.io/">Yu Rong<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="https://liuziwei7.github.io/">Ziwei Liu<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="https://scholar.google.com/citations?user=F5rVlz0AAAAJ&hl=en">Cheng Li<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="https://ai.stanford.edu/~kaidicao/">Kaidi Cao<sup>4</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="http://personal.ie.cuhk.edu.hk/~ccloy/">Chen Change Loy<sup>3</sup></a>
-	</div>
+<h3>Introduction:</h3>
 
-	<div class="affiliations">
-	  <sup>1</sup> <a href="http://mmlab.ie.cuhk.edu.hk/" target="_blank">CUHK - SenseTime Joint Lab, The Chinese University of Hong Kong</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-	  <sup>2</sup> <a href="https://www.sensetime.com/">SenseTime Research</a>&nbsp;&nbsp;
-	  <sup>3</sup> <a href="https://www.ntu.edu.sg/Pages/home.aspx">Nanyang Technological University, Singapore</a>&nbsp;&nbsp;
-	  <sup>4</sup> <a href="http://svl.stanford.edu/">Stanford University</a>
-	</div>
+Glaucoma is a chronic eye disease that leads to irreversible vision loss. Since vision loss from glaucoma cannot be reversed, early screening and detection methods are essential to preserve vision and life quality. One major glaucoma screening technique is optic nerve head (ONH) assessment, which employs a binary classification to identify the glaucomatous and healthy subjects.  
+<br><br>
 
-	<div class="venue"></div>
-  </div>
+<div style="text-align: center; display: block; margin-right: auto;">
+<img src="sub_img/cover_CDR.jpg" border="0" width="400"><br></div> 
+Figure: Structure of the optic nerve head. The vertical cup to disc ratio (CDR) is calculated by the ratio of vertical cup diameter (VCD) to vertical disc diameter (VDD), which plays an important role in the screening and diagnosis of glaucoma. <br>
 
-    
-  <div class="section demo">
-		<br> <center>
-      <iframe width="840" height="472" src="https://www.youtube.com/embed/8TULGUsb4ZE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </center> <br>
-	</div>
+<br>
 
-  <div class="section abstract">
-	<h2>Abstract</h2>
-	<br>
-	<p>
-		Though much progress has been achieved in single-image 3D human recovery, estimating 3D model for in-the-wild images remains a formidable challenge. The reason lies in the fact that obtaining high-quality 3D annotations for in-the-wild images is an extremely hard task that consumes enormous amount of resources and manpower.  
-To tackle this problem, previous methods adopt a hybrid training strategy that exploits multiple heterogeneous types of annotations including 3D and 2D while leaving the efficacy of each annotation not thoroughly investigated.
-In this work, we aim to perform a comprehensive study on cost and effectiveness trade-off between different annotations.
-Specifically, we focus on the challenging task of in-the-wild 3D human recovery from single images when paired 3D annotations are not fully available.
-Through extensive experiments, we obtain several observations: 1) 3D annotations are efficient, whereas traditional 2D annotations such as 2D keypoints and body part segmentation are less competent in guiding 3D human recovery. 2) Dense Correspondence such as DensePose is effective. When there are no paired in-the-wild 3D annotations available, models exploiting dense correspondence can achieve 92% of the performance compared to a model trained with paired 3D data.
-We show that incorporating dense correspondence into in-the-wild 3D human recovery is promising and competitive due to its high efficiency and relatively low annotating cost. Our model trained with dense correspondence can serve as a strong reference for future research.
+<hr/>
 
-    <br><br>
-	</p>
-      </div>
-	<div class="section framework">
-	<h2>Framework</h2>
-    <br>
-	<center><img src="./dct_iccv2019/framework.png" border="0" width="95%"></center>
-	<p>
-     Our framework is composed of three components. 1) Input encoding part takes inputs and outputs encoded features. 2) Parameter estimator estimates the pose and shape parameters of the SMPL model given the outputs of the encoder. 3) Given estimated parameters, SMPL model generates predicted 3D joints, 2D keypoints and dense keypoints to calculate loss. Figure (b) shows two possible architectures of the input encoder. Input encoder could either be composed of a single branch that only takes one kind of inputs or two branches that takes original images and the other auxiliary inputs.
-	</p>
+<h3>Glaucoma Dataset:</h3>
+
+Due to the clinical policy, the ORIGA, SCES, and SINDI datasets cannot be released. <br>
+ 
+However, we organized the <strong>REFUGE: Retinal Fundus Glaucoma Challenge</strong> in conjunction with the MICCAI-OMIA Workshop 2018, including disc/cup segmentation, glaucoma screening, and localization of fovea tasks. This challenge provided 1200 fundus images (400 training + 400 validation + 400 test) with pixel labels. If you are interested, you can register and download dataset from: [<a href="https://refuge.grand-challenge.org/home/" target="_blank"><font color="#E74C3C"><ud2>Link</ud2></font></a>]
+
+
+<br>
+
+<br>
+<hr />
+
+<h3>MNet: Multi-label Deep Network:</h3>
+
+In this work, we proposed a deep learning architecture, named M-Net, which solves the OD and OC segmentation jointly in a one-stage multi-label system. The proposed M-Net mainly consists of multi-scale input layer, U-shape convolutional network, side-output layer, and multi-label loss function. The multi-scale input layer constructs an image pyramid to achieve multiple level receptive field sizes. The U-shape convolutional network is employed as the main body network structure to learn the rich hierarchical representation, while the side-output layer acts as an early classifier that produces a companion local prediction map for different scale layers. Finally, a multi-label loss function is proposed to generate the final segmentation map.
+<br> <br>
+
+<strong>Reference:</strong><br>
+
+Huazhu Fu,  Jun Cheng, Yanwu Xu, Damon Wing Kee Wong, Jiang Liu, and Xiaochun Cao,  <strong>"Joint Optic Disc and Cup Segmentation Based on Multi-label Deep Network and Polar Transformation"</strong>, 
+<em>IEEE Transactions on Medical Imaging (TMI)</em>, vol. 37, no. 7, pp. 1597-1605, 2018.  <br>  
+<a href="https://arxiv.org/abs/1801.00926" target="_blank">[PDF]</a>  
+<a href="https://github.com/HzFu/MNet_DeepCDR" target="_blank"><font color="#ff0000">[Code]</font></a> 
+<br><br>
+
+<div style="text-align: center; display: block; margin-right: auto;">
+<img src="sub_img/framework_MNet.jpg" border="0" width="600"><br></div> 
+Figure: Our M-Net architecture consists of multi-scale input layer, U-shape convolutional network, side-output layer, and multi-label loss function.<br>
+
+<br>
+<hr/>
+
+<h3>DENet: Disc-aware Ensemble Network:</h3>
+
+In this work, we introduce a deep learning technique to gain additional image-relevant information, and screen glaucoma from the fundus image directly. Specifically, a novel Disc-aware Ensemble Network (DENet) for automatic glaucoma screening is proposed, which integrates the deep hierarchical context of the global fundus image and the local optic disc region. Four deep streams on different levels and modules are respectively considered as global image stream, segmentation-guided network, local disc region stream, and disc polar transformation stream. Finally, the output probabilities of different streams are fused as the final screening result.  
+<br><br>
+
+<strong>Reference:</strong><br>
+
+Huazhu Fu,  Jun Cheng, Yanwu Xu, Changqing Zhang, Damon Wing Kee Wong, Jiang Liu,  Xiaochun Cao,  <strong>"Disc-aware Ensemble Network for Glaucoma Screening from Fundus Image"</strong>, 
+<em>IEEE Transactions on Medical Imaging (TMI)</em>, 2018. In press. (DOI: 10.1109/TMI.2018.2837012) <br>
+<a href="http://arxiv.org/abs/1805.07549" target="_blank">[PDF]</a> 
+<a href="https://github.com/HzFu/DENet_GlaucomaScreen" target="_blank"><font color="#ff0000">[Code]</font></a>
+
+<br><br>
+
+<div style="text-align: center; display: block; margin-right: auto;">
+<img src="sub_img/framework_DENet.jpg" border="0" width="600"><br></div> 
+Figure: Architecture of our DENet, which contains four streams: global image stream produces the result based on the global fundus image; the segmentation guided network localizes the optic disc region and generates a detection output embedded the disc-segmentation representation; disc region stream works on disc region cropped by disc segmentation map from segmentation-guided network; disc polar stream transfers the disc region image into the polar coordinate system. The combination of these four streams is fused as the final glaucoma screening result.
+<br>
+
+<br>
+<hr />
+
+
+
+<h3>Other Related Works:</h3>
+
+<ol>
+
+<li>Huazhu Fu, Yanwu Xu, Stephen Lin, Damon Wing Kee Wong, Jiang Liu,  <strong>"DeepVessel: Retinal Vessel Segmentation via Deep Learning and Conditional Random Field"</strong>,  
+in <em>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</em>, 2016, pp. 132-139. <br>
+<a href="http://dx.doi.org/10.1007/978-3-319-46723-8_16" class="user-mention" target="_blank">[PDF]</a> <a href="proj_deepvessel.html">[Project]</a></li>
+
+<li>Huazhu Fu,  Yanwu Xu, Stephen Lin, Xiaoqin Zhang, Damon Wing Kee Wong, Jiang Liu, Alejandro F. Frangi,  Mani Baskaran, Tin Aung,  <strong>"Segmentation and Quantification for Angle-Closure Glaucoma Assessment in Anterior Segment OCT"</strong>,  
+<em>IEEE Transactions on Medical Imaging (TMI)</em>, vol. 36, no. 9, pp. 1930-1938, 2017.  <br> 
+<a href="https://doi.org/10.1109/TMI.2017.2703147" target="_blank">[PDF]</a> <a href="proj_glaucoma_asoct.html" target="_blank">[Project]</a></li>
+
+</ol>
+
+<br>
+
+
+      </section>
+
     </div>
+<script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
 
-    <br>
-    <div class="section experiment">
-        <h2>Experimental Results</h2>
-        <br>
-            <center><img src="./dct_iccv2019/table.png" border="0" width="100%"></center>
-        <p> The evaluation metrics are PVE, MPJPE and PVE-T, separately. For all metrics, lower is better. "3D" refers to paired in-the-wild 3D annotations. "20% 3D" refers to 20% randomly selected 3D annotations. "Sparse 2D" refers to sparse 2D keypoints. "Dense" refers to dense correspondence, namely, IUV maps generated by DensePose.  </p>
-        <center><img src="./dct_iccv2019/efficiency_3d.png" border="0" width="100%"></center>
-    </div>
-        
 
-    <br><br>
-    <div class="section visualization">
-        <h2>Visualization</h2>
-        <br>
-            <center><img src="./dct_iccv2019/visualization.png" border="0" width="100%"></center>
-        <p>
-        Results of our flow-guided video inpainting approach. For each input sequence (odd row), 
-        we show representative frames with mask of missing region overlay. We show the inpainting 
-        results in even rows.
-        </p>
-    </div>
-	
-    <br><br>
-<div class="section materials">
-	<h2>Materials</h2>
-	<center>
-	  <ul>
-
-          <li class="grid">
-	      <div class="griditem">
-		<a href="https://arxiv.org/abs/1908.06442" target="_blank" class="imageLink"><img src="./dct_iccv2019/paper.png" border="0" width="40%"></a><br>
-		  <a href="https://arxiv.org/abs/1908.06442" target="_blank">Paper</a>
-		</div>
-	      </li>
-		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <li class="grid">
-	      <div class="griditem">
-		<a href="dct_iccv2019/DCT_supp.pdf" target="_blank" class="imageLink"><img src="./dct_iccv2019/supp.png" border="0" width="40%"></a><br>
-		  <a href="dct_iccv2019/DCT_supp.pdf" target="_blank">Supplemental Material</a>
-		</div>
-	      </li>
-		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	
-		  
-		  <li class="grid">
-	      <div class="griditem">
-		<a href="https://github.com/penincillin/DCT_ICCV-2019"><img src="./dct_iccv2019/code.png"></a><br>
-		  <a href="https://github.com/penincillin/DCT_ICCV-2019">Code and Models</a>
-		</div>
-	      </li>
-	  
-	    </ul>
-	    </center>
-	    </div>
-	    
-        <br><br>
-<div class="section citation">
-	<h2>Citation</h2>
-	<div class="section bibtex">
-	  <pre>@InProceedings{Rong_2019_ICCV,
-author = {Rong, Yu and Liu, Ziwei and Li, Cheng and Cao, Kaidi and Change Loy, Chen},
-title = {Delving Deep into Hybrid Annotations for 3D Human Recovery in the Wild},
-booktitle = {Proceedings of the IEEE international conference on computer vision},
-year = {2019}
-}</pre>
-	  </div>
-      </div>
-
-</div></div>
-</body></html>
