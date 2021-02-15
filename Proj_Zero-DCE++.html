@@ -134,10 +134,7 @@
   <div id="content">
     <div id="content-inner">
       <div class="section head">
-        <h1>
-          <font color="LightSkyBlue">Zero</font>-Reference <font color="LightSkyBlue">D</font>eep <font color="LightSkyBlue">C</font>urve <font color="LightSkyBlue">E</font>stimation (<font color="LightSkyBlue">Zero-DCE</font>)
-        </h1>
-        <h1>for Low-Light Image Enhancement</h1>
+        <h1>Learning to Enhance Low-Light Image via Zero-Reference Deep Curve Estimation</h1>
         <!--=================Authors==========================-->
         <div class="authors">
          
@@ -173,7 +170,7 @@
       <div class="section abstract">
         <h2>Highlights</h2>
         <ol>
-          <li><p>We propose the first low-light enhancement network that is independent of paired and unpaired training data, thus avoiding the risk of overfitting. As a result, our method generalizes well to various lighting conditions.</p></li>
+          <div<li><p>We propose the first low-light enhancement network that is independent of paired and unpaired training data, thus avoiding the risk of overfitting. As a result, our method generalizes well to various lighting conditions.</p></li></div>
           <li><p>We design an image-specific curve that is able to approximate pixel-wise and higher-order curves by iteratively applying itself. Such image-specific curve can effectively perform mapping within a wide dynamic range.</p></li>
           <li><p>We show the potential of training a deep image enhancement model in the absence of reference images through task-specific non-reference loss functions that indirectly evaluate enhancement quality.</p></li>
           <li><p>The proposed Zero-DCE can be accelerated considerably while still keeping impressive enhancement performance. We provide multiple options to balance the enhancement performance and the cost of computational resources.</p></li>
@@ -185,7 +182,7 @@
         <h2>Differences</h2>
         <ol>
           <li><p>We investigate the relations between the enhancement performance and the network structure, curve estimation, and input sizes. According to the investigation, we re-design the network structure, reformulate the curve formation, and control  the sizes of input image, and thus present an accelerated and light version Zero-DCE, called Zero-DCE++, which is more suitable for real-time enhancement on resource-limited devices.</p></li>
-          <li><p>Comparing to our earlier work, without compromising  the enhancement performance, the trainable parameters (79K) and foating point operations (FLOPs) (84.99G) for an input image of size 1200$\times$900$\times$3 of Zero-DCE are reduced to 10K and 0.115G on Zero-DCE++. This translates to two times in runtime speed up, from 500 FPS in Zero-DCE to 1000 FPS in Zero-DCE++, for processing an image of size 1200$\times$900$\times$3 on a single NVIDIA 2080Ti GPU. In addition, even only with Intel Core i9-10920X CPU@3.5GHz, the processing time of Zero-DCE also can be reduced from 10s to 0.09s on Zero-DCE++, a 111 times speed up on a single CPU setting. The training time is also reduced from 30 minutes to 20 minutes.</p></li>
+          <li><p>Comparing to our earlier work, without compromising  the enhancement performance, the trainable parameters (79K) and foating point operations (FLOPs) (84.99G) for an input image of size 1200*900*3 of Zero-DCE are reduced to 10K and 0.115G on Zero-DCE++. This translates to two times in runtime speed up, from 500 FPS in Zero-DCE to 1000 FPS in Zero-DCE++, for processing an image of size 1200*900*3 on a single NVIDIA 2080Ti GPU. In addition, even only with Intel Core i9-10920X CPU@3.5GHz, the processing time of Zero-DCE also can be reduced from 10s to 0.09s on Zero-DCE++, a 111 times speed up on a single CPU setting. The training time is also reduced from 30 minutes to 20 minutes.</p></li>
           <li><p>We perform more experiments, design analysis, and ablation studies to demonstrate the advantages of zero-reference learning for low-light image enhancement and show the effectiveness of our method over existing state-of-the-art methods.</p></li>
           <li><p>We conduct a more comprehensive literature survey on low-light image enhancement and discuss the advantages and limitations of current methods.</p></li>
         </ol>
