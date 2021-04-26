@@ -2,11 +2,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
-  <title>Learning to Enhance Low-Light Image via Zero-Reference Deep Curve Estimation</title>
+  <title>Underwater Image Enhancement via Medium Transmission-Guided Multi-Color Space Embedding</title>
   <!--=================Meta tags==========================-->
   <meta name="robots" content="index,follow">
-  <meta name="description" content="Learning to Enhance Low-Light Image via Zero-Reference Deep Curve Estimation.">
-  <meta name="keywords" content="Zero-Reference">
+  <meta name="description" content="Underwater Image Enhancement via Medium Transmission-Guided Multi-Color Space Embedding">
+  <meta name="keywords" content="Ucolor">
   <link rel="author" href="https://li-chongyi.github.io">
   <!--=================js==========================-->
   <link href="./Zero-DCE_files/css.css" rel="stylesheet" type="text/css">
@@ -134,61 +134,105 @@
   <div id="content">
     <div id="content-inner">
       <div class="section head">
-        <h1>Learning to Enhance Low-Light Image via Zero-Reference Deep Curve Estimation</h1>
+        <h1>Underwater Image Enhancement via Medium Transmission-Guided Multi-Color Space Embedding</h1>
         <!--=================Authors==========================-->
         <div class="authors">
          
           <a href="https://li-chongyi.github.io/" target="_blank">Chongyi Li</a> <sup>1</sup> &nbsp;
+          <a href="https://saeed-anwar.github.io/" target="_blank">Saeed Anwar</a> <sup>2</sup> &nbsp;
+          <a href="https://sites.google.com/site/junhuihoushomepage/" target="_blank">Junhui Hou</a> <sup>3</sup> &nbsp;
+          <a href="https://rmcong.github.io/" target="_blank">Runmin Cong</a> <sup>4</sup> &nbsp;
           <a href="https://scholar.google.com/citations?user=0hG9q_cAAAAJ&hl=zh-CN" target="_blank">Chunle Guo</a> <sup>2</sup> &nbsp;
-          <a href="http://personal.ie.cuhk.edu.hk/~ccloy/index.html" target="_blank">Chen Change Loy</a> <sup>1</sup>&nbsp;
+          <a href="https://sites.google.com/site/renwenqi888/home" target="_blank">Wenqi Ren</a> <sup>5</sup>&nbsp;
         </div>
 
         <div class="affiliations ">
           <sup>1</sup> Nanyang Technological University, Singapore<br>
-          <sup>2</sup> Nankai University, Tianjin, China
+          <sup>2</sup> CSIRO, Australia<br>
+          <sup>3</sup> City University of Hong Kong, Hong Kong<br>
+          <sup>4</sup> Beijing Jiaotong University, China<br>
+          <sup>5</sup> Nankai University, Tianjin, China<br>
+          <sup>6</sup> Institute of Information Engineering, Chinese Academy of Sciences, China
         </div>
-        <!--=================Tabs==========================
+        <!--=================Tabs==========================-->
         <ul id="tabs">
-          <li><a href="https://li-chongyi.github.io/Zero.html#materials" name="#tab1">Materials</a></li>
-          <li><a href="https://li-chongyi.github.io/Zero.html#pcd_tsa" name="#tab2">PCD &amp; TSA</a></li>
-          <li><a href="https://li-chongyi.github.io/Zero.html#ablations" name="#tab3">Ablations</a></li>
-          <li><a href="https://li-chongyi.github.io/Zero.html#results" name="#tab4">Results</a></li>
-          <li><a href="https://li-chongyi.github.io/Zero.html#citation" name="#tab5">Citation</a></li>
-      </ul>-->
+          <li><a href="#abstract" name="#tab1">Abstract</a></li>
+          <li><a href="#highlights" name="#tab2">Highlights</a></li>
+          <li><a href="#teasers" name="#tab3">Method</a></li>
+          <li><a href="#results" name="#tab4">Results</a></li>
+          <li><a href="#materials" name="#tab4">Materials</a></li>
+          <!--<li><a href="#citation" name="#tab5">Citation</a></li>-->
+      </ul>
       </div>
-      <br>
-      <div class="section abstract">
+     
+      <div class="section abstract" ,="" id="abstract">
         <h2>Abstract</h2>
         <br>
         <p>
           <div style="text-align: justify; display: block; margin-right: auto;">
-          <p>This work is an extension of our earlier conference version that has appeared in CVRP2020 (<a href="https://li-chongyi.github.io/Proj_Zero-DCE.html" target="_blank">Zero-DCE</a>). We further present an accelerated and light version of Zero-DCE, called Zero-DCE++, that takes advantage of a tiny network with just 10K parameters. Zero-DCE++ has a fast inference speed (1000/11 FPS on single GPU/CPU for an image with a size of 1200*900*3) while keeping the enhancement performance of Zero-DCE.</p>
+          <p>Underwater images suffer from color casts and low contrast due to  wavelength- and distance-dependent attenuation and  scattering. To solve these two degradation issues, we present an underwater image enhancement network via medium transmission-guided multi-color space embedding, called Ucolor. Concretely, we first propose a multi-color space encoder network, which enriches the diversity of feature representations by incorporating the characteristics of different color spaces into a unified structure. Coupled with an attention mechanism, the most discriminative features extracted from multiple color spaces are adaptively integrated and highlighted. Inspired by underwater imaging physical models, we design a medium transmission (indicating the percentage of the scene radiance reaching the camera)-guided decoder network to enhance the response of network towards quality-degraded regions. As a result, our network can effectively improve the visual quality of underwater images by exploiting  multiple color spaces embedding and the advantages of both physical model-based and learning-based methods. Extensive experiments demonstrate that our Ucolor achieves superior performance against state-of-the-art methods in terms of both visual quality and quantitative metrics.</p>
         </p>
       </div>
       
       <!--=================Highlights==========================-->
-      <div class="section abstract">
+      <div   class="section highlights" ,="" id="highlights">
         <h2>Highlights</h2>
         <ol>
-          <li><p>We propose the first low-light enhancement network that is independent of paired and unpaired training data, thus avoiding the risk of overfitting. As a result, our method generalizes well to various lighting conditions.</p></li>
-          <li><p>We design an image-specific curve that is able to approximate pixel-wise and higher-order curves by iteratively applying itself. Such image-specific curve can effectively perform mapping within a wide dynamic range.</p></li>
+          <li><p>We propose a  multi-color space encoder network coupled with an attention mechanism for incorporating the characteristics of different color spaces into a unified structure and adaptively selecting the most representative features.</p></li>
+          <li><p>We propose a medium transmission-guided decoder network to enforce the network to pay more attention to quality-degraded regions. It explores the complementary merits between domain knowledge of underwater imaging and deep neural networks.</p></li>
           <li><p>We show the potential of training a deep image enhancement model in the absence of reference images through task-specific non-reference loss functions that indirectly evaluate enhancement quality.</p></li>
-          <li><p>The proposed Zero-DCE can be accelerated considerably while still keeping impressive enhancement performance. We provide multiple options to balance the enhancement performance and the cost of computational resources.</p></li>
+          <li><p>Our Ucolor achieves state-of-the-art performance on several recent benchmarks in terms of both visual quality and quantitative metrics.</p></li>
         </ol>
       </div>
 
-      <!--=================Differences==========================-->
-      <div class="section abstract">
-        <h2>Modifications</h2>
-        <ol>
-          <li><p>We investigate the relations between the enhancement performance and the network structure, curve estimation, and input sizes. According to the investigation, we re-design the network structure, reformulate the curve formation, and control  the sizes of input image, and thus present an accelerated and light version Zero-DCE, called Zero-DCE++, which is more suitable for real-time enhancement on resource-limited devices.</p></li>
-          <li><p>Comparing to our earlier work, without compromising  the enhancement performance, the trainable parameters (79K) and foating point operations (FLOPs) (84.99G) for an input image of size 1200*900*3 of Zero-DCE are reduced to 10K and 0.115G on Zero-DCE++. This translates to two times in runtime speed up, from 500 FPS in Zero-DCE to 1000 FPS in Zero-DCE++, for processing an image of size 1200*900*3 on a single NVIDIA 2080Ti GPU. In addition, even only with Intel Core i9-10920X CPU@3.5GHz, the processing time of Zero-DCE also can be reduced from 10s to 0.09s on Zero-DCE++, a 111 times speed up on a single CPU setting. The training time is also reduced from 30 minutes to 20 minutes.</p></li>
-          <li><p>We perform more experiments, design analysis, and ablation studies to demonstrate the advantages of zero-reference learning for low-light image enhancement and show the effectiveness of our method over existing state-of-the-art methods.</p></li>
-          <li><p>We conduct a more comprehensive literature survey on low-light image enhancement and discuss the advantages and limitations of current methods.</p></li>
+      <!--=================Teasers==========================-->
+      <div class="img_container",="" id="teasers" >
+       <ol>
+          <h2>Method</h2>
         </ol>
+          <ol>
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class="std" src="./TIP21_Ucolor_files/Ucolor_framework.png">
+          </div>
+        </center>
+         </ol>
+      </div>
+      <div class="section">
+       <ol>
+        <p><b>Overview of the architecture of Ucolor</b>. Our Ucolor consists of a multi-color space encoder network and a medium transmission-guided decoder network. In our method, we normalize the values of the medium transmission map to [0,1] and feed the reverse medium transmission map  (denoted as RMT) to the medium transmission guidance module. </p>
+         </ol>
       </div>
 
-     
+      <!--=================Results==========================-->
+      <div  class="img_container",="" id="results">
+       <ol>
+          <h2>Image</h2>
+        </ol>
+          <ol>
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class="std" src="./TIP21_Ucolor_files/Ucolor_results.png">
+          </div>
+        </center>
+         </ol>
+      </div>
+      <div class="section">
+      </div>
+      <!--=================*******==========================-->
+      <ol>
+        <h2>Video</h2>
+      </ol>
+          <div class="section demo">
+    <br> 
+    <center>
+      <iframe width="800" height="400" src=" https://www.youtube.com/embed/xzOzXd6Uz5k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe> 
+    </center> 
+    <br>
+  </div>
   
             <!--=================Materials==========================-->
       <div class="section materials" ,="" id="materials">
@@ -197,33 +241,20 @@
           <tbody><tr>
             <td width="20%">
               <center>
-                <a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Guo_Zero-Reference_Deep_Curve_Estimation_for_Low-Light_Image_Enhancement_CVPR_2020_paper.pdf" target="_blank" class="imageLink"><img src="./Zero-DCE_files/CVPR20_logo.png" ,="" width="80%"></a><br><br>
-                <a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Guo_Zero-Reference_Deep_Curve_Estimation_for_Low-Light_Image_Enhancement_CVPR_2020_paper.pdf" target="_blank">Conference Version</a>
+                <a href="" target="_blank" class="imageLink"><img src="./TIP21_Ucolor_files/paper_logo.jpg" ,="" width="40%"></a><br><br>
+                <a href="" target="_blank">Paper</a>
               </center>
             </td>
             <td width="20%">
               <center>
-                <a href="https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Guo_Zero-Reference_Deep_Curve_CVPR_2020_supplemental.pdf" target="_blank" class="imageLink"><img src="./Zero-DCE_files/CVPR20_logo.png" ,="" width="80%"></a><br><br>
-                <a href="https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Guo_Zero-Reference_Deep_Curve_CVPR_2020_supplemental.pdf" target="_blank">Supplementary</a>
+                <a href="" target="_blank" class="imageLink"><img src="./TIP21_Ucolor_files/paper_logo.jpg" ,="" width="40%"></a><br><br>
+                <a href="" target="_blank">Supplementary</a>
               </center>
             </td>
             <td width="20%">
               <center>
-                <a href="https://github.com/Li-Chongyi/Zero-DCE" target="_blank" class="imageLink"><img src="./Zero-DCE_files/icon_github.png" ,="" width="40%"></a><br><br>
-                <a href="https://github.com/Li-Chongyi/Zero-DCE" target="_blank">Code and Model (Zero-DCE)</a>
-              </center>
-            </td>
-
-            <td width="20%">
-              <center>
-                <a href="https://ieeexplore.ieee.org/document/9369102/" target="_blank" class="imageLink"><img src="./Zero-DCE_files/TPAMI_logo.png" ,="" width="80%"></a><br><br>
-                <a href="https://ieeexplore.ieee.org/document/9369102/" target="_blank">TPAMI</a>
-              </center>
-            </td>
-            <td width="20%">
-              <center>
-                <a href="https://github.com/Li-Chongyi/Zero-DCE_extension" target="_blank" class="imageLink"><img src="./Zero-DCE_files/icon_github.png" ,="" width="40%"></a><br><br>
-                <a href="https://github.com/Li-Chongyi/Zero-DCE_extension" target="_blank">Code and Model (Zero-DCE++)</a>
+                <a href="https://github.com/Li-Chongyi/Ucolor" target="_blank" class="imageLink"><img src="./Zero-DCE_files/icon_github.png" ,="" width="30%"></a><br><br>
+                <a href="https://github.com/Li-Chongyi/Ucolor" target="_blank">Code</a>
               </center>
             </td>
 
@@ -234,33 +265,22 @@
       <div class="section citation" ,="" id="citation">
         <h2>Citation</h2>
         <div class="section bibtex">
-          <pre>@Article{Zero-DCE++,
-          author ={Li, Chongyi and Guo, Chunle and Loy, Chen Change},
-          title = {Learning to Enhance Low-Light Image via Zero-Reference Deep Curve Estimation},
-          journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+          <pre>@Article{Ucolor,
+          author ={Li, Chongyi and Anwar, Saeed and Hou, Junhui and Cong, Runmin and Guo, Chunle and Ren, Wenqi},
+          title = {Underwater Image Enhancement via Medium Transmission-Guided Multi-Color Space Embedding},
+          journal = {IEEE Transactions on Image Processing},
           pape={},
           year = {2021},
-          doi={10.1109/TPAMI.2021.3063604}
+          doi={}
           }
           </pre>
         </div>
       </div>
           
-      <div class="section bibtex">
-          <pre>@Article{Zero-DCE,
-          author = {Guo, Chunle and Li, Chongyi and Guo, Jichang and Loy, Chen Change and Hou, Junhui and Kwong, Sam and Cong Runmin},
-          title = {Zero-reference deep curve estimation for low-light image enhancement},
-          journal = {CVPR},
-          pape={1780-1789},
-          year = {2020}
-          }
-          </pre>
-        </div>
-      </div>
       <!--=================Contact==========================-->
       <div class="section contact">
         <h2 id="contact">Contact</h2>
-        <p>If you have any questions, please contact Chongyi Li at <strong>lichongyi25@gmail.com</strong> or Chunle Guo at <strong>guochunle@tju.edu.cn</strong>.</p>
+        <p>If you have any questions, please contact Chongyi Li at <strong>lichongyi25@gmail.com</strong>.</p>
       </div>
 
 
