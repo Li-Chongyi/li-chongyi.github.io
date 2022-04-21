@@ -173,7 +173,91 @@
           <b>The key insight of this study is to investigate how to combine CNN and Transformer for image dehazing.</b> To solve the feature inconsistency issue between Transformer and CNN, we propose to modulate CNN features via learning modulation matrices (i.e., coefficient matrix and bias matrix) conditioned on Transformer features instead of simple feature addition or concatenation. The feature modulation naturally inherits the global context modeling capability of Transformer and the local representation capability of CNN. We bring a haze density-related prior into Transformer via a novel transmission-aware 3D position embedding module, which not only provides the relative position but also suggests the haze density of different spatial regions. Extensive experiments demonstrate that our method attains state-of-the-art performance on several image dehazing benchmarks..</p>
         </p>
       </div>
-
+      <!--=================Teasers==========================-->
+      <div id="img_intro_examples" class="img_container">
+       <ol>
+          <h2>Pipeline</h2>
+        </ol>
+          <ol>
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class="std" src="./CVPR22_files/network.png">
+          </div>
+        </center>
+         </ol>
+      </div>
+      <div class="section">
+       <ol>
+        <p>
+          <div style="text-align: justify; display: block; margin-right: auto;">
+          <b>Overview structure of our  method</b>. Our method consists of five key modules:  a transmission-aware 3D position embedding module, a Transformer module, a CNN encoder module, a feature modulation module, and a CNN decoder module.</p>
+         </ol>
+      </div>
+      <!--=================Teasers==========================-->
+      <div id="img_intro_examples" class="img_container">
+       <ol>
+          <h2>3D Position Embedding</h2>
+        </ol>
+          <ol>
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class="std" src="./CVPR22_files/pos_00.png">
+          </div>
+        </center>
+         </ol>
+      </div>
+      <div class="section">
+       <ol>
+        <p>
+          <div style="text-align: justify; display: block; margin-right: auto;">
+          <b>Illustration of our 3D position embedding</b>. The dimensions from 0 to 31 represent the horizontal positions, from 32 to 63 represent the vertical positions, and from 64 to 95 represent the haze density positions.</p>
+         </ol>
+      </div>
+      <!--=================Highlights==========================-->
+      <div class="section abstract">
+        <h2>Highlights</h2>
+        <ol>
+          <div style="text-align: justify; display: block; margin-right: auto;">
+          <li><p>In comparison to pure CNN-based image dehazing networks, our work is the first to introduce the power of Transformer into image dehazing via novel designs.</p></li>
+          <li><p>We propose a novel transmission-aware 3D position embedding to involve haze density-related prior information into  Transformer.</p></li>
+          <li><p>Extensive experiments on image dehazing benchmark datasets demonstrate the outstanding performance of our method against state-of-the-art methods.</p></li>
+        </ol>
+      </div>
+      <!--=================Applications==========================-->
+      <div class="section" ,="" id="results">
+        <h2>Results</h2>
+        <!--=================*******==========================-->
+        <h3>1. Visual Comparisons</h3>
+        <div id="vid4" class="img_container">
+          <center>
+            <div class="leftView">
+              <div class="mask" style="width:130px;height:160px"></div>
+              <img class="std" src="./CVPR22_files/syn_1.png">
+              <div class="mask" style="width:130px;height:160px"></div>
+              <img class="std" src="./CVPR22_files/syn_2.png">
+              <div class="mask" style="width:130px;height:160px"></div>
+              <img class="std" src="./CVPR22_files/real_1.png">
+              <div class="mask" style="width:130px;height:160px"></div>
+              <img class="std" src="./CVPR22_files/real_2.png">
+            </div>
+          </center>
+        </div>
+        <br>
+        <!--=================*******==========================-->
+        <h3>3. Quantitative Results</h3>
+        <div id="vid3" class="img_container">
+          <center>
+            <div class="leftView">
+              <div class="mask" style="width:160px;height:160px"></div>
+              <img class="std" src="./CVPR22_files/table_1.png">
+              <div class="mask" style="width:160px;height:160px"></div>
+              <img class="std" src="./CVPR22_files/table_2.png">
+            </div> 
+          </center>
+        </div>
+        <br>
             <!--=================Materials==========================-->
       <div class="section materials" ,="" id="materials">
         <h2>Materials</h2>
@@ -181,13 +265,13 @@
           <tbody><tr>
             <td width="20%">
               <center>
-                <a href="" target="_blank" class="imageLink"><img src="." ,="" width="50%"></a><br><br>
+                <a href="" target="_blank" class="imageLink"><img src="./logo/CVPR NewOrleansLogo_WebsiteCorner.png" ,="" width="50%"></a><br><br>
                 <a href="" target="_blank">Paper</a>
               </center>
             </td>
             <td width="20%">
               <center>
-                <a href="" target="_blank" class="imageLink"><img src="" ,="" width="50%"></a><br><br>
+                <a href="" target="_blank" class="imageLink"><img src="./logo/CVPR NewOrleansLogo_WebsiteCorner.png" ,="" width="50%"></a><br><br>
                 <a href="" target="_blank">Supplementary Material</a>
               </center>
             </td>
