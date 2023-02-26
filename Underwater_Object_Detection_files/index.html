@@ -1,0 +1,218 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Is Underwater Image Enhancement All Object Detectors Need?</title>
+  <!--=================Meta tags==========================-->
+  <meta name="robots" content="index,follow">
+  <meta name="keywords" content="Underwater Images, Image Enhancement, Object Detection">
+  <link rel="author" href="https://li-chongyi.github.io//">
+  <!--=================js==========================-->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link href="./css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./project.css" media="screen">
+  <script src="./effect.js "></script>
+  <!-- Latex -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+      </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+  <script type="text/javascript" async src="./canvas-nest-1.0.1.min.js"></script>
+
+  <!--=================Google Analytics==========================-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129775907-1');
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      <div class="section head">
+        <br> 
+        <h1>
+          Is Underwater Image Enhancement All Object Detectors Need?
+        </h1>
+       <!--  <h1>
+        </h1> -->
+        <!--=================Authors==========================-->
+        <div class="authors">
+          <br>
+          <a href="https://github.com/BIGWangYuDong" target="_blank">Yudong Wang</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="http://seea.tju.edu.cn/info/1014/1453.htm" target="_blank">Jichang Guo</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Wanru He</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Huan Gao</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Huihui Yue</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Zenan Zhang</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://li-chongyi.github.io/" target="_blank">Chongyi Li</a> 
+        </div>
+
+        <div class="affiliations ">
+         Tianjin University, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     S-Lab, Nanyang Technological University<br>
+        </div>
+        <!--=================Tabs==========================-->
+        <ul id="tabs">
+          <li><a href="#abstract" name="#tab1">Abstract</a></li>
+          <li><a href="#Results" name="#tab3">Results</a></li>
+          <li><a href="#citation" name="#tab5">Citation</a></li>
+      </div>
+      <br>
+      <!--=================Teasers==========================-->
+      <div class="section" , id="method">
+        <h2></h2>
+        <div style="text-align: center; vertical-align:middle">
+          <img src="src/Teasers.png" width="900">
+        </div>
+        <div align="center" style="margin-top: 5px">
+          <b>Samples of the visual detection results.</b>
+        </div>
+      </div>
+
+
+
+      <!--=================Abstract==========================-->
+      <div class="section abstract", id="abstract">
+        <h2>Abstract</h2>
+        <p style="text-align:justify; text-justify:inter-ideograph;"> 
+          <br>
+
+
+Underwater object detection is a crucial and challenging problem in marine engineering and aquatic robot. The difficulty is partly because of the degradation of underwater images caused by light selective absorption and scattering. Intuitively, enhancing underwater images can benefit high-level applications like underwater object detection. However, it is still unclear whether all object detectors need underwater image enhancement as pre-processing. We therefore wonder “Does underwater image enhancement really improve underwater object detection?” and “How does underwater image enhancement contribute to underwater object detection?”. With these two questions, we conduct extensive studies. Specifically, we use 13 state-of-the-art underwater image enhancement algorithms, covering traditional, CNN-based, and GAN-based algorithms, to pre-process underwater object detection data. Then, we retrain 7 popular deep learning-based object detectors using the corresponding results enhanced by different algorithms, obtaining 91 underwater object detection models.  Coupled with 7 object detection models retrained using raw underwater images, we employ these 98 models to comprehensively analyze the effect of underwater image enhancement on underwater object detection. We expect this study can provide sufficient exploration to answer the aforementioned questions and draw more attention of the community to the joint problem of underwater image enhancement and underwater object detection. The pre-trained models and results are publicly available and will be regularly updated. 
+
+
+
+        </p>
+      </div>
+
+      <!--=================Results==========================-->
+      <div class="section" , id="method">
+        <h2>Results</h2>
+        <div style="text-align: center; vertical-align:middle">
+          <img src="src/fig5.png" width="900">
+        </div>
+        <div align="center" style="margin-top: 5px">
+          <b>Precision-recall curve at IoU threshold=0.5.</b>
+        </div>
+        <p style="text-align:justify; text-justify:inter-ideograph;"> 
+          The PR curves (IoU threshold=0.5) of Faster R-CNN with different backbones and training schedules, RetinaNet, Cascade R-CNN, FCOS, ATSS, TOOD, and SSD with average PR curve of 4 categories.
+        </p>
+      </div>
+
+
+            <!--=================Demo==========================
+      <div class="section demo">
+        <br>
+        <center> <video  muted="muted" width="740" class="publogo"   controls= "autoPlay" onended="this.currentTime = 0; this.play();" autoplay="" src="src/underwater_object_detection.mp4"> <source src="src/underwater_object_detection.mp4" type="video/mp4"></video>
+        </center>
+        <br>
+        <p align="center" style="margin-top: -2px">
+        <b>Video Demo</b><br>
+        <b><font color="#FF0000"></font></b>
+        </p>
+-->
+<!--=================*******==========================-->
+        <h3>Video Demo</h3>
+          <div class="section demo">
+    <br> <center>
+      <iframe width="800" height="500" src="https://www.youtube.com/embed/ljv_Fj1olug" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </center> <br>
+  </div>
+
+             <!--=================Materials==========================-->
+      <div class="section materials" , id="materials">
+        <h2>Materials</h2>
+        <br>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="50%">
+              <center>
+                <a href="" target="_blank" class="imageLink"><img
+                    src="./src/thumbnail.png" , height="130"></a><br><br>
+                <a href="" disabled target="_blank">Paper</a>
+              </center>
+            </td>
+            <td width="30%" valign="middle">
+              <center>
+                <a href="https://github.com/BIGWangYuDong/lqit/tree/main/configs/detection/urpc_detection" target="_blank" class="imageLink"><img
+                    src="./src/icon_github.png" , height="130"></a><br><br>
+                <a href="https://github.com/BIGWangYuDong/lqit/tree/main/configs/detection/urpc_detection" target="_blank">Code</a>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+
+      <!--=================Citation==========================-->
+      <div class="section citation" , id="citation">
+        <h2>Citation</h2>
+        <p>If you find our dataset and paper useful for your research, please consider citing our work:
+        </p>
+        <div class="section bibtex">
+          <pre>@inproceedings{Wang2022,
+          author = {Wang, Yudong and Guo, Jichang and He, Wanru and Gao, Huan and Yue, Huihui and Zhang, Zenan and Li, Chongyi},
+          title = {Is Underwater Image Enhancement All Object Detectors Need?},
+          booktitle = {Arixv},
+          year = {2022}
+          }</pre>
+        </div>
+      </div>
+
+      <!--=================License==========================-->
+      <div class="section" , id="License">
+        <h2>License</h2>
+        <p>
+          We retain all the copyrights of this method.
+        </p>
+      </div> 
+
+
+      <!--=================Contact==========================-->
+      <div class="section contact">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any question, please contact us via <strong>yudongwang@tju.edu.cn</strong>.
+        </p>
+        <br>
+      </div>
+</body>
+
+</html>
