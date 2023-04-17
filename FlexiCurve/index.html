@@ -1,0 +1,246 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>FlexiCurve: Flexible Piecewise Curves Estimation for Photo Retouching</title>
+  <!--=================Meta tags==========================-->
+  <meta name="robots" content="index,follow">
+  <meta name="keywords" content="Curve Estimation, Image Retouching, Image Enhancement, Photo Enhancement">
+  <link rel="author" href="https://li-chongyi.github.io//">
+  <!--=================js==========================-->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link href="./css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./project.css" media="screen">
+  <script src="./effect.js "></script>
+  <!-- Latex -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+      </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+  <script type="text/javascript" async src="./canvas-nest-1.0.1.min.js"></script>
+
+  <!--=================Google Analytics==========================-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129775907-1');
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner" >
+      <div class="section head" style="z-index: 1;">
+          <br>
+        <h1>
+         FlexiCurve: Flexible Piecewise Curves Estimation for Photo Retouching
+        </h1>
+       <!--  <h1>
+        </h1> -->
+        <!--=================Authors==========================-->
+        <div class="authors";">
+          <br>
+          <a href="https://li-chongyi.github.io" target="_blank">Chongyi Li</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://scholar.google.com.au/citations?user=RZLYwR0AAAAJ&hl=en" target="_blank">Chun-Le Guo</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://shangchenzhou.com/" target="_blank">Shangchen Zhou</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href=" " target="_blank">Qiming Ai</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://jnjaby.github.io/" target="_blank">Ruicheng Feng</a> 
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.mmlab-ntu.com/person/ccloy/" target="_blank">Chen Change Loy</a> 
+
+          
+        </div>
+
+        <div class="affiliations ">
+          S-Lab, Nanyang Technological University &nbsp;&nbsp;&nbsp;&nbsp; <br>Nankai University&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        </div>
+        <!--=================Tabs==========================-->
+        <ul id="tabs">
+          <li><a href="#abstract" name="#tab1">Abstract</a></li>
+          <li><a href="#method" name="#tab3">Method</a></li>
+          <li><a href="#results" name="#tab4">Results</a></li>
+          <li><a href="#citation" name="#tab5">Citation</a></li>
+      </div>
+      <br>
+
+<!--       <div style="text-align: center;">
+        <video width="700", poster="src/video_poster.png" controls><source src="src/video.mp4" type=video/mp4></video>
+      </div> -->
+
+
+
+      <!--=================Abstract==========================-->
+      <div class="section abstract", id="abstract">
+        <h2>Abstract</h2>
+        <p style="text-align:justify; text-justify:inter-ideograph;"> 
+          <br>
+   This paper presents a new method, called FlexiCurve, for photo retouching. Unlike most existing methods that perform image-to-image mapping, which requires expensive pixel-wise reconstruction, FlexiCurve takes an input image and estimates global curves to adjust the image. The adjustment curves are specially designed for performing piecewise mapping, taking nonlinear adjustment and differentiability into account. To cope with challenging and diverse properties in real-world photos, FlexiCurve is formulated to produce diverse estimations. The spatial dependencies among these estimations are implicitly modeled by a Transformer structure to improve local retouching of different regions. Thanks to the image-to-curve formulation, FlexiCurve only needs a lightweight network. Our method improves efficiency without compromising the retouching quality and losing details in the original image. The method is also appealing as it is not limited to paired training data, thus it can flexibly learn rich retouching styles from unpaired data.  Extensive experiments demonstrate the efficiency, retouching performance, and flexibility of our method quantitatively and qualitatively.</p>
+          <br>
+       </div>
+
+
+
+      <!--=================Method==========================-->
+      <div class="section" , id="method">
+        <h2>Method</h2>
+        <div style="text-align: center; vertical-align:middle">
+          <img src="src/sample.png" width="900">
+        </div>
+        <div align="center" style="margin-top: 5px">
+          <b>Visual examples by FlexiCurve</b>
+        </div>
+        <p style="text-align:justify; text-justify:inter-ideograph;"> 
+          The first row represents the low-quality images sampled from Adobe 5K dataset. The second row represents the corresponding results by the proposed FlexiCurve, where (a) represents the results retouched by FlexiCurve trained with paired data and (b) represents the results retouched by FlexiCurve trained with unpaired data. FlexiCurve can deal with global tone and local properties well and does not introduce over-/under-enhancement regions regardless of paired or unpair
+        </p>
+        <div style="text-align: center; vertical-align:middle">
+          <img src="src/pipeline.png" width="900">
+        </div>
+        <div align="center" style="margin-top: 5px">
+          <b>Overview of the FlexiCurve framework</b>
+        </div>
+        <p style="text-align:justify; text-justify:inter-ideograph;"> 
+         The input image is first fed to the parameter estimation network (PE-Net) for estimating a set of knot points and curve parameters. The knot points and curve parameters define the piecewise nonlinear global curves (PNG Curves), which are used to adjust the level of the RGB channels of an input image. Multiple curves are generated simultaneously to provide us with multiple globally adjusted results ($G_{1}$, $G_{2}$, $G_{3}$). The final result is achieved by blending such intermediate results via a Transformer. (a) FlexiCurve trained with unpaired data, where global and local discriminators are used to distinguish whether the final image or randomly cropped patches are `real' or `fake', respectively. To preserve the original image content, a content loss is employed. (b) FlexiCurve trained with paired data, where the $\ell_{2}$ and $SSIM$ losses are employed for supervised training.
+        </p>
+      </div>
+
+      <!--=================Results==========================-->
+      <div class="section" , id="results">
+        <h2>Results</h2>
+         <div style="text-align: center; vertical-align:middle">
+          <img src="src/unpair.png" width="800">
+        </div>
+        <div align="center" style="margin-top: 5px">
+          <b>Visual comparisons of the unsupervised models on MIT-Adobe5K-DPE dataset.</b>
+        </div>
+         <div style="text-align: center; vertical-align:middle">
+          <img src="src/pair.png" width="800">
+        </div>
+        <div align="center" style="margin-top: 5px">
+          <b>Visual comparisons of the supervised models trained on the same splits  on the MIT-Adobe5K-DPE dataset.</b>
+        </div>
+
+
+
+      <div class="section" id="Materials">
+        <!--<h2>Meterials</h2>
+         <table style="width:100%; text-align: center; margin-top: 20px; font-size: 16.5px;">
+          <tbody style="width: 100%; margin-left: 40px; margin-right: 40px;">
+            <tr>
+              <td style="width:33%; text-align: center">
+                <a href="https://arxiv.org/abs/2208.06857">
+                  <img src="src/paper.png"/>
+                </a>
+              </td>
+              <td style="width: 33%; text-align: center">
+                <a href="https://pan.baidu.com/s/1K29p3gJWYa1ZM0vMHqI4uA">
+                  <img src="src/cloud-download.png" style="height: 150px; width:150px"/>
+                </a>
+              </td>
+              <td style="width:33%; text-align: center">
+                <a href="https://github.com/RQ-Wu/UnderwaterRanker">
+                  <img src="src/icon_github.png" style="height: 140px; width:140px"/>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <br>
+                <a href="https://arxiv.org/abs/2208.06857">Paper</a>
+              </td>
+              <td>
+                <br>
+                <a href="https://pan.baidu.com/s/1K29p3gJWYa1ZM0vMHqI4uA">Dataset (pwd: nuin)</a>
+              </td>
+              <td>
+                <br>
+                <a href="https://github.com/RQ-Wu/UnderwaterRanker">Codes</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+        <h2>Materials</h2>
+        <br>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="30%">
+              <center>
+                <a href="#" target="_blank" class="imageLink"><img
+                    src="./src/paper.png" , height="120"></a><br><br>
+                <a href="" disabled target="_blank">Paper</a>
+              </center>
+            </td>
+            <td width="30%" valign="middle">
+              <center>
+                <a href="" target="_blank" class="imageLink"><img
+                    src="./src/icon_github.png" , height="120"></a><br><br>
+                <a href="" target="_blank">Code</a>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!--=================License==========================-->
+      <div class="section" , id="License">
+        <h2>License</h2>
+        <p>
+          We retain all the copyrights of this method.
+        </p>
+      </div> 
+
+
+      <!--=================Citation==========================-->
+      <div class="section citation" , id="citation">
+        <h2>Citation</h2>
+        <p>If you find our dataset and paper useful for your research, please consider citing our work:
+        </p>
+        <div class="section bibtex">
+          <pre style="padding-left: 10px;">@inproceedings{FlexiCurve,
+  title={Flexible Piecewise Curves Estimation for Photo Enhancement},
+  author={Chongyi Li and Chun-Le Guo and  Qiming Ai  and  Shangchen Zhou and Ruicheng Feng and Chen Change Loy},
+  booktitle={CVPRW},
+  year={2023}
+}</pre>
+        </div>
+      </div>
+
+      <!--=================Contact==========================-->
+      <div class="section contact">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any question, please contact us via <strong>lichongyi25@gmail.com</strong>.
+        </p>
+        <br>
+      </div>
+</body>
+
+</html>
