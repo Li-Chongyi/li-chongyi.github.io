@@ -9,23 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#202421; --muted:#67706a; --line:#dedfdb; --paper:#fdfdfc; --soft:#f5f7f4; --sage:#356c54; --sage-soft:#e7f0e9; --max:1010px; }
+    :root { --ink:#202421; --muted:#67706a; --line:#dedfdb; --paper:#fdfdfc; --sage:#356c54; --sage-soft:#e7f0e9; --max:1010px; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { margin:0; background:var(--paper); color:var(--ink); font-family:"Source Sans 3",Arial,sans-serif; font-size:17px; line-height:1.62; }
     a { color:var(--sage); text-decoration:none; border-bottom:1px solid #aac8b6; }
     a:hover { color:#1d4935; border-color:var(--sage); }
     .wrap { width:min(var(--max), calc(100% - 48px)); margin:0 auto; }
-    header { height:71px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
-    .brand { color:var(--ink); font-size:18px; font-weight:700; letter-spacing:-.025em; border:0; }
-    .brand:hover { color:var(--ink); }
-    nav { display:flex; align-items:center; gap:23px; font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.01em; }
+    header { min-height:71px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:flex-end; }
+    nav { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:22px; font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.01em; }
     nav a { color:var(--muted); border:0; } nav a:hover { color:var(--sage); }
+    nav .language { color:var(--sage); font-weight:500; }
     main { padding:61px 0 72px; }
     .profile { display:grid; grid-template-columns:200px minmax(0,1fr); gap:40px; align-items:start; }
     .portrait { width:200px; aspect-ratio:4/5; object-fit:cover; object-position:center; filter:saturate(.92) contrast(.98); }
     .content { max-width:700px; }
-    h1 { margin: -10px 0 2px; font-size:48px; line-height:1.08; letter-spacing:-.045em; font-weight:700; }
+    h1 { margin:-10px 0 2px; font-size:48px; line-height:1.08; letter-spacing:-.045em; font-weight:700; }
     .role { margin:0 0 22px; color:var(--muted); font-size:18px; }
     .links { display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 25px; font-size:15px; }
     .links a { border:0; } .links a::after { content:" ↗"; font-size:12px; }
@@ -33,28 +32,25 @@
     .callout { margin:26px 0 28px; padding:16px 19px 17px; border-left:3px solid var(--sage); background:var(--sage-soft); color:#264836; font-size:16px; line-height:1.55; }
     .callout strong { font-weight:700; }
     section { max-width:790px; margin-top:68px; }
-    .section-title { display:flex; align-items:baseline; gap:15px; margin-bottom:20px; }
+    .section-title { display:flex; align-items:baseline; gap:15px; margin-bottom:22px; }
     h2 { margin:0; font-size:28px; line-height:1.2; font-weight:600; letter-spacing:-.025em; }
     .section-number { font:11px "DM Mono",monospace; color:var(--sage); }
     .research { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:28px; }
     .research-item { padding-top:14px; border-top:1px solid var(--line); }
     .research-item h3 { margin:0 0 5px; font-size:17px; font-weight:600; line-height:1.25; }
     .research-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.5; }
-    .publication-note { margin:0 0 18px; color:var(--muted); font-size:16px; }
-    .publication { display:grid; grid-template-columns:44px 1fr; gap:15px; padding:20px 0; border-top:1px solid var(--line); }
-    .publication:last-child { border-bottom:1px solid var(--line); }
-    .pub-index { padding-top:2px; color:var(--sage); font:12px "DM Mono",monospace; }
-    .pub-title { margin:0 0 3px; color:var(--ink); font-size:17px; font-weight:600; line-height:1.35; }
-    .pub-authors,.pub-venue { margin:0; color:var(--muted); font-size:15px; line-height:1.5; }
-    .pub-venue { font-style:italic; }
+    .experience { border-top:1px solid var(--line); }
+    .experience-item { display:grid; grid-template-columns:112px 1fr; gap:20px; padding:18px 0; border-bottom:1px solid var(--line); }
+    .experience-item time { padding-top:2px; color:var(--sage); font:11px "DM Mono",monospace; }
+    .experience-item h3 { margin:0 0 2px; font-size:17px; font-weight:600; line-height:1.3; }
+    .experience-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.5; }
     footer { padding:25px 0 38px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
-    @media (max-width:650px) { body { font-size:16px; } .wrap { width:min(100% - 34px, 560px); } header { height:62px; } nav { gap:13px; font-size:10px; } main { padding-top:42px; } .profile { grid-template-columns:1fr; gap:24px; } .portrait { width:124px; } h1 { font-size:41px; } .role { font-size:16px; } .research { grid-template-columns:1fr; gap:18px; } section { margin-top:52px; } }
+    @media (max-width:650px) { body { font-size:16px; } .wrap { width:min(100% - 34px, 560px); } header { min-height:62px; } nav { gap:11px 14px; font-size:10px; } main { padding-top:42px; } .profile { grid-template-columns:1fr; gap:24px; } .portrait { width:124px; } h1 { font-size:41px; } .role { font-size:16px; } .research { grid-template-columns:1fr; gap:18px; } .experience-item { grid-template-columns:1fr; gap:4px; } section { margin-top:52px; } }
   </style>
 </head>
 <body>
   <header class="wrap">
-    <a class="brand" href="#about">Chongyi Li</a>
-    <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="https://www.pi-lab.xyz/">π Lab</a></nav>
+    <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="https://www.pi-lab.xyz/">π Lab</a><a class="language" href="zh/">Chinese</a></nav>
   </header>
   <main class="wrap">
     <article id="about" class="profile">
@@ -63,28 +59,34 @@
         <h1>Chongyi Li</h1>
         <p class="role">Professor at Nankai University</p>
         <div class="links"><a href="mailto:lichongyi@nankai.edu.cn">Email</a><a href="https://scholar.google.com/citations?user=1_I0P-AAAAAJ&hl=en">Google Scholar</a><a href="https://www.pi-lab.xyz/">π Research Group</a></div>
-        <p>I am a Professor at Nankai University, where I lead the π Research Group. My research interests span computational imaging, image enhancement and restoration, generative vision, multimodal models, and visual intelligence.</p>
-        <p>My work aims to build reliable visual systems that understand, restore, and create images and videos under real-world conditions. I am particularly interested in the connection between imaging, perception, and generative models.</p>
+        <p>I am a Professor in the College of Computer Science at Nankai University, where I lead the π Research Group. I am also an Adjunct Professor of Haihe College (National AI Institute).</p>
+        <p>Before joining Nankai University, I was a Research Assistant Professor and a Postdoctoral Researcher at Nanyang Technological University, and a Postdoctoral Researcher at City University of Hong Kong. I received my Ph.D. in Information and Communication Engineering from Tianjin University, including joint doctoral training at the Australian National University.</p>
+        <p>My research interests span computational imaging, image enhancement and restoration, generative vision, multimodal models, and visual intelligence. My work aims to build reliable visual systems that understand, restore, and create images and videos under real-world conditions.</p>
         <div class="callout"><strong>Open positions.</strong> I welcome prospective students, postdoctoral researchers, and collaborators interested in computer vision, imaging, and generative AI. Please get in touch by email with a short introduction and your CV.</div>
         <p>For detailed information on group members, projects, and joining the lab, please visit the <a href="https://www.pi-lab.xyz/">π Research Group website</a>.</p>
       </div>
     </article>
 
+    <section id="experience">
+      <div class="section-title"><span class="section-number">01</span><h2>Work &amp; Education</h2></div>
+      <div class="experience">
+        <article class="experience-item"><time>Current</time><div><h3>Professor</h3><p>College of Computer Science, Nankai University</p></div></article>
+        <article class="experience-item"><time>Current</time><div><h3>Adjunct Professor</h3><p>Haihe College (National AI Institute)</p></div></article>
+        <article class="experience-item"><time>Previous</time><div><h3>Research Assistant Professor</h3><p>School of Computer Science and Engineering, Nanyang Technological University</p></div></article>
+        <article class="experience-item"><time>Previous</time><div><h3>Postdoctoral Researcher</h3><p>School of Computer Science and Engineering, Nanyang Technological University</p></div></article>
+        <article class="experience-item"><time>Previous</time><div><h3>Postdoctoral Researcher</h3><p>Department of Computer Science, City University of Hong Kong</p></div></article>
+        <article class="experience-item"><time>Ph.D.</time><div><h3>Information and Communication Engineering</h3><p>Tianjin University</p></div></article>
+        <article class="experience-item"><time>Joint Ph.D.</time><div><h3>Joint Doctoral Training</h3><p>College of Engineering, Australian National University</p></div></article>
+      </div>
+    </section>
+
     <section id="research">
-      <div class="section-title"><span class="section-number">01</span><h2>Research</h2></div>
+      <div class="section-title"><span class="section-number">02</span><h2>Research</h2></div>
       <div class="research">
         <article class="research-item"><h3>Computational Imaging</h3><p>Enhancement, restoration, and robust imaging in challenging visual environments.</p></article>
         <article class="research-item"><h3>Generative Vision</h3><p>Controllable image and video generation, editing, and multimodal learning.</p></article>
         <article class="research-item"><h3>Visual Intelligence</h3><p>Perception, representation, and visual systems for real-world intelligent applications.</p></article>
       </div>
-    </section>
-
-    <section id="publications">
-      <div class="section-title"><span class="section-number">02</span><h2>Selected Publications</h2></div>
-      <p class="publication-note">For a complete and continuously updated publication list, please visit my <a href="https://scholar.google.com/citations?user=1_I0P-AAAAAJ&hl=en">Google Scholar profile</a>.</p>
-      <article class="publication"><div class="pub-index">01</div><div><p class="pub-title">LAMP: Learn A Motion Pattern for Few-Shot Video Generation</p><p class="pub-authors">Ruiqi Wu, Linagyu Chen, Tong Yang, Chunle Guo, Chongyi Li, Xiangyu Zhang</p><p class="pub-venue">CVPR, 2024</p></div></article>
-      <article class="publication"><div class="pub-index">02</div><div><p class="pub-title">Learning Inclusion Matching for Animation Paint Bucket Colorization</p><p class="pub-authors">Yuekun Dai, Shangchen Zhou, Qinyue Li, Chongyi Li, Chen Change Loy</p><p class="pub-venue">CVPR, 2024</p></div></article>
-      <article class="publication"><div class="pub-index">03</div><div><p class="pub-title">Iterative Prompt Learning for Unsupervised Backlit Image Enhancement</p><p class="pub-authors">Zhexin Liang, Chongyi Li, Shangchen Zhou, Ruicheng Feng, Chen Change Loy</p><p class="pub-venue">ICCV, 2023</p></div></article>
     </section>
   </main>
   <footer class="wrap">© 2026 Chongyi Li · Nankai University</footer>

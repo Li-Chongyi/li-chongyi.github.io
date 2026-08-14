@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="李重仪——南开大学教授。研究方向包括计算成像与视觉智能。">
+  <title>李重仪——个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#202421; --muted:#67706a; --line:#dedfdb; --paper:#fdfdfc; --sage:#356c54; --sage-soft:#e7f0e9; --max:1010px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; font-size:17px; line-height:1.75; }
+    a { color:var(--sage); text-decoration:none; border-bottom:1px solid #aac8b6; }
+    a:hover { color:#1d4935; border-color:var(--sage); }
+    .wrap { width:min(var(--max), calc(100% - 48px)); margin:0 auto; }
+    header { min-height:71px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:flex-end; }
+    nav { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:22px; font-size:13px; }
+    nav a { color:var(--muted); border:0; } nav a:hover { color:var(--sage); }
+    nav .language { color:var(--sage); font-family:"DM Mono",monospace; font-size:11px; font-weight:500; }
+    main { padding:61px 0 72px; }
+    .profile { display:grid; grid-template-columns:200px minmax(0,1fr); gap:40px; align-items:start; }
+    .portrait { width:200px; aspect-ratio:4/5; object-fit:cover; object-position:center; filter:saturate(.92) contrast(.98); }
+    .content { max-width:730px; }
+    h1 { margin:-10px 0 3px; font-size:45px; line-height:1.16; letter-spacing:-.045em; font-weight:700; }
+    .role { margin:0 0 22px; color:var(--muted); font-size:18px; }
+    .links { display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 25px; font-size:15px; }
+    .links a { border:0; } .links a::after { content:" ↗"; font-size:12px; }
+    p { margin:0 0 18px; }
+    .callout { margin:26px 0 28px; padding:16px 19px 17px; border-left:3px solid var(--sage); background:var(--sage-soft); color:#264836; font-size:16px; line-height:1.7; }
+    .callout strong { font-weight:700; }
+    section { max-width:790px; margin-top:68px; }
+    .section-title { display:flex; align-items:baseline; gap:15px; margin-bottom:22px; }
+    h2 { margin:0; font-size:28px; line-height:1.3; font-weight:600; letter-spacing:-.025em; }
+    .section-number { font:11px "DM Mono",monospace; color:var(--sage); }
+    .research { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:28px; }
+    .research-item { padding-top:14px; border-top:1px solid var(--line); }
+    .research-item h3 { margin:0 0 5px; font-size:17px; font-weight:600; line-height:1.45; }
+    .research-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.7; }
+    .experience { border-top:1px solid var(--line); }
+    .experience-item { display:grid; grid-template-columns:112px 1fr; gap:20px; padding:18px 0; border-bottom:1px solid var(--line); }
+    .experience-item time { padding-top:3px; color:var(--sage); font-size:13px; font-weight:600; }
+    .experience-item h3 { margin:0 0 2px; font-size:17px; font-weight:600; line-height:1.45; }
+    .experience-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.65; }
+    footer { padding:25px 0 38px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+    @media (max-width:650px) { body { font-size:16px; } .wrap { width:min(100% - 34px, 560px); } header { min-height:62px; } nav { gap:11px 14px; font-size:12px; } main { padding-top:42px; } .profile { grid-template-columns:1fr; gap:24px; } .portrait { width:124px; } h1 { font-size:39px; } .role { font-size:16px; } .research { grid-template-columns:1fr; gap:18px; } .experience-item { grid-template-columns:1fr; gap:4px; } section { margin-top:52px; } }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav aria-label="主导航"><a href="#about">个人简介</a><a href="#experience">工作与教育经历</a><a href="#research">研究方向</a><a href="https://www.pi-lab.xyz/">π 研究组</a><a class="language" href="../">英文</a></nav>
+  </header>
+  <main class="wrap">
+    <article id="about" class="profile">
+      <img class="portrait" src="../assets/chongyi-travel-portrait-4x5.png" alt="李重仪的照片">
+      <div class="content">
+        <h1>李重仪</h1>
+        <p class="role">南开大学计算机学院教授</p>
+        <div class="links"><a href="mailto:lichongyi@nankai.edu.cn">联系邮箱</a><a href="https://scholar.google.com/citations?user=1_I0P-AAAAAJ&hl=en">学术主页</a><a href="https://www.pi-lab.xyz/">π 研究组</a></div>
+        <p>我现任南开大学计算机学院教授，领导 π 研究组；同时兼任海河学院（国家人工智能学院）兼职教授。</p>
+        <p>加入南开大学前，我曾任南洋理工大学计算机与工程学院助理教授（研究）及博士后研究员，并曾在香港城市大学计算机科学学院从事博士后研究。</p>
+        <p>我于天津大学电气与信息工程学院获得信息与通信工程博士学位，并在澳大利亚国立大学工程学院进行联合培养博士研究。研究兴趣涵盖计算成像、图像增强与复原、生成式视觉、多模态模型与视觉智能，致力于构建能在真实环境中理解、复原与创造图像和视频的可靠视觉系统。</p>
+        <div class="callout"><strong>招生与合作。</strong> 欢迎对计算机视觉、智能成像与生成式人工智能感兴趣的硕士生、博士生、博士后和科研合作者联系交流。来信时请附上个人简介、研究兴趣与个人简历。</div>
+        <p>研究组成员、项目与招生的详细信息，请访问 <a href="https://www.pi-lab.xyz/">π 研究组网站</a>。</p>
+      </div>
+    </article>
+
+    <section id="experience">
+      <div class="section-title"><span class="section-number">01</span><h2>工作与教育经历</h2></div>
+      <div class="experience">
+        <article class="experience-item"><time>现任</time><div><h3>教授</h3><p>南开大学计算机学院</p></div></article>
+        <article class="experience-item"><time>现任</time><div><h3>兼职教授</h3><p>海河学院（国家人工智能学院）</p></div></article>
+        <article class="experience-item"><time>曾任</time><div><h3>助理教授（研究）</h3><p>南洋理工大学计算机与工程学院</p></div></article>
+        <article class="experience-item"><time>曾任</time><div><h3>博士后</h3><p>南洋理工大学计算机与工程学院</p></div></article>
+        <article class="experience-item"><time>曾任</time><div><h3>博士后</h3><p>香港城市大学计算机科学学院</p></div></article>
+        <article class="experience-item"><time>博士</time><div><h3>信息与通信工程</h3><p>天津大学电气与信息工程学院</p></div></article>
+        <article class="experience-item"><time>联合培养博士</time><div><h3>工程学院</h3><p>澳大利亚国立大学</p></div></article>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="section-title"><span class="section-number">02</span><h2>研究方向</h2></div>
+      <div class="research">
+        <article class="research-item"><h3>计算成像</h3><p>面向复杂视觉环境的图像增强、复原与鲁棒成像。</p></article>
+        <article class="research-item"><h3>生成式视觉</h3><p>图像与视频的可控生成、编辑及多模态学习。</p></article>
+        <article class="research-item"><h3>视觉智能</h3><p>面向真实世界智能应用的视觉感知、表征与系统。</p></article>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">© 2026 李重仪 · 南开大学</footer>
+</body>
+</html>
