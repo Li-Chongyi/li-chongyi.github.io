@@ -23,7 +23,7 @@
     main { padding:61px 0 72px; }
     .profile { display:grid; grid-template-columns:200px minmax(0,1fr); gap:40px; align-items:start; }
     .portrait { width:200px; aspect-ratio:4/5; object-fit:cover; object-position:center; filter:saturate(.92) contrast(.98); }
-    .content { max-width:700px; }
+    .content { max-width:730px; }
     h1 { margin:-10px 0 2px; font-size:48px; line-height:1.08; letter-spacing:-.045em; font-weight:700; }
     .role { margin:0 0 22px; color:var(--muted); font-size:18px; }
     .links { display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 25px; font-size:15px; }
@@ -39,18 +39,13 @@
     .research-item { padding-top:14px; border-top:1px solid var(--line); }
     .research-item h3 { margin:0 0 5px; font-size:17px; font-weight:600; line-height:1.25; }
     .research-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.5; }
-    .experience { border-top:1px solid var(--line); }
-    .experience-item { display:grid; grid-template-columns:112px 1fr; gap:20px; padding:18px 0; border-bottom:1px solid var(--line); }
-    .experience-item time { padding-top:2px; color:var(--sage); font:11px "DM Mono",monospace; }
-    .experience-item h3 { margin:0 0 2px; font-size:17px; font-weight:600; line-height:1.3; }
-    .experience-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.5; }
     footer { padding:25px 0 38px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
-    @media (max-width:650px) { body { font-size:16px; } .wrap { width:min(100% - 34px, 560px); } header { min-height:62px; } nav { gap:11px 14px; font-size:10px; } main { padding-top:42px; } .profile { grid-template-columns:1fr; gap:24px; } .portrait { width:124px; } h1 { font-size:41px; } .role { font-size:16px; } .research { grid-template-columns:1fr; gap:18px; } .experience-item { grid-template-columns:1fr; gap:4px; } section { margin-top:52px; } }
+    @media (max-width:650px) { body { font-size:16px; } .wrap { width:min(100% - 34px, 560px); } header { min-height:62px; } nav { gap:11px 14px; font-size:10px; } main { padding-top:42px; } .profile { grid-template-columns:1fr; gap:24px; } .portrait { width:124px; } h1 { font-size:41px; } .role { font-size:16px; } .research { grid-template-columns:1fr; gap:18px; } section { margin-top:52px; } }
   </style>
 </head>
 <body>
   <header class="wrap">
-    <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="https://www.pi-lab.xyz/">π Lab</a><a class="language" href="zh/">Chinese</a></nav>
+    <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#research">Research</a><a href="https://www.pi-lab.xyz/" target="_blank" rel="noopener noreferrer">π Lab</a><a class="language" href="zh/">Chinese</a></nav>
   </header>
   <main class="wrap">
     <article id="about" class="profile">
@@ -58,30 +53,17 @@
       <div class="content">
         <h1>Chongyi Li</h1>
         <p class="role">Professor at Nankai University</p>
-        <div class="links"><a href="mailto:lichongyi@nankai.edu.cn">Email</a><a href="https://scholar.google.com/citations?user=1_I0P-AAAAAJ&hl=en">Google Scholar</a><a href="https://www.pi-lab.xyz/">π Research Group</a></div>
-        <p>I am a Professor in the College of Computer Science at Nankai University, where I lead the π Research Group. I am also an Adjunct Professor of Haihe College (National AI Institute).</p>
-        <p>Before joining Nankai University, I was a Research Assistant Professor and a Postdoctoral Researcher at Nanyang Technological University, and a Postdoctoral Researcher at City University of Hong Kong. I received my Ph.D. in Information and Communication Engineering from Tianjin University, including joint doctoral training at the Australian National University.</p>
-        <p>My research interests span computational imaging, image enhancement and restoration, generative vision, multimodal models, and visual intelligence. My work aims to build reliable visual systems that understand, restore, and create images and videos under real-world conditions.</p>
+        <div class="links"><a href="mailto:lichongyi@nankai.edu.cn">Email</a><a href="https://scholar.google.com/citations?user=1_I0P-AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a><a href="https://www.pi-lab.xyz/" target="_blank" rel="noopener noreferrer">π Research Group</a></div>
+        <p>I am currently a Professor in the College of Computer Science at Nankai University, where I lead the <a href="https://www.pi-lab.xyz/" target="_blank" rel="noopener noreferrer">π Research Group</a>, and concurrently serve as a Professor at Hetao College.</p>
+        <p>Before joining Nankai University, I served as a Research Assistant Professor and Postdoctoral Researcher at <a href="https://www.mmlab-ntu.com/index.html" target="_blank" rel="noopener noreferrer">MMLab@NTU</a> and <a href="https://www.ntu.edu.sg/s-lab" target="_blank" rel="noopener noreferrer">S-Lab</a>, Nanyang Technological University, working closely with <a href="https://www.mmlab-ntu.com/person/ccloy/index.html" target="_blank" rel="noopener noreferrer">Prof. Chen Change Loy</a>. I was also a Postdoctoral Researcher at City University of Hong Kong, where I worked closely with <a href="https://scholars.ln.edu.hk/en/persons/sam-tak-wu-kwong/" target="_blank" rel="noopener noreferrer">Prof. Sam Kwong</a>.</p>
+        <p>I received my Ph.D. from Tianjin University and completed joint doctoral training at the Australian National University, working closely with <a href="https://www.porikli.com/" target="_blank" rel="noopener noreferrer">Fatih Porikli</a>. My research interests span computational imaging, image enhancement and restoration, generative vision, multimodal models, and visual intelligence. I aim to build reliable visual systems that understand, restore, and create images and videos under real-world conditions.</p>
         <div class="callout"><strong>Open positions.</strong> I welcome prospective students, postdoctoral researchers, and collaborators interested in computer vision, imaging, and generative AI. Please get in touch by email with a short introduction and your CV.</div>
-        <p>For detailed information on group members, projects, and joining the lab, please visit the <a href="https://www.pi-lab.xyz/">π Research Group website</a>.</p>
+        <p>For detailed information on group members, projects, and joining the lab, please visit the <a href="https://www.pi-lab.xyz/" target="_blank" rel="noopener noreferrer">π Research Group website</a>.</p>
       </div>
     </article>
 
-    <section id="experience">
-      <div class="section-title"><span class="section-number">01</span><h2>Work &amp; Education</h2></div>
-      <div class="experience">
-        <article class="experience-item"><time>Current</time><div><h3>Professor</h3><p>College of Computer Science, Nankai University</p></div></article>
-        <article class="experience-item"><time>Current</time><div><h3>Adjunct Professor</h3><p>Haihe College (National AI Institute)</p></div></article>
-        <article class="experience-item"><time>Previous</time><div><h3>Research Assistant Professor</h3><p>School of Computer Science and Engineering, Nanyang Technological University</p></div></article>
-        <article class="experience-item"><time>Previous</time><div><h3>Postdoctoral Researcher</h3><p>School of Computer Science and Engineering, Nanyang Technological University</p></div></article>
-        <article class="experience-item"><time>Previous</time><div><h3>Postdoctoral Researcher</h3><p>Department of Computer Science, City University of Hong Kong</p></div></article>
-        <article class="experience-item"><time>Ph.D.</time><div><h3>Information and Communication Engineering</h3><p>Tianjin University</p></div></article>
-        <article class="experience-item"><time>Joint Ph.D.</time><div><h3>Joint Doctoral Training</h3><p>College of Engineering, Australian National University</p></div></article>
-      </div>
-    </section>
-
     <section id="research">
-      <div class="section-title"><span class="section-number">02</span><h2>Research</h2></div>
+      <div class="section-title"><span class="section-number">01</span><h2>Research</h2></div>
       <div class="research">
         <article class="research-item"><h3>Computational Imaging</h3><p>Enhancement, restoration, and robust imaging in challenging visual environments.</p></article>
         <article class="research-item"><h3>Generative Vision</h3><p>Controllable image and video generation, editing, and multimodal learning.</p></article>
